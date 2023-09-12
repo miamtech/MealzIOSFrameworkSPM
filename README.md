@@ -3,7 +3,7 @@ Holds MiamCore & MiamIOSFRamework Binaries so that clients can use SPM to use ou
 
 ## SPM Installation
 
-on XCode, go to File -> Add Packages, copy & paste the URL (https://github.com/miamtech/MiamPublicSPM). Add the package, binding the to the main branch. 
+on XCode, go to File -> Add Packages, copy & paste the URL (https://github.com/miamtech/MiamPublicSPM). Add the package, binding to the main branch. 
 
 ## Usage
 
