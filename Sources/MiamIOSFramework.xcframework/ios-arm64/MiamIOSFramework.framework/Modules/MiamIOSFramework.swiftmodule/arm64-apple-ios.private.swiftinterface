@@ -1,0 +1,2288 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MiamIOSFramework
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Combine
+import Foundation
+@_exported import MiamIOSFramework
+import OSLog
+import Swift
+import SwiftUI
+import _AVKit_SwiftUI
+import _Concurrency
+import _StringProcessing
+import miamCore
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct RecipeDetailsViewTemplate<HeaderContent, IngredientsContent, StepsContent, FooterContent> : SwiftUI.View where HeaderContent : MiamIOSFramework.RecipeDetailsHeaderViewTemplate, IngredientsContent : MiamIOSFramework.RecipeDetailsIngredientsViewTemplate, StepsContent : MiamIOSFramework.RecipeDetailsStepsViewTemplate, FooterContent : MiamIOSFramework.RecipeDetailsFooterTemplate {
+  @_Concurrency.MainActor(unsafe) public var headerContent: HeaderContent
+  @_Concurrency.MainActor(unsafe) public var ingredientsContent: IngredientsContent
+  @_Concurrency.MainActor(unsafe) public var stepsContent: StepsContent
+  @_Concurrency.MainActor(unsafe) public var footerContent: FooterContent
+  @_Concurrency.MainActor(unsafe) public var recipeId: Swift.String?
+  @_Concurrency.MainActor(unsafe) public var guestCountFromUser: Swift.Int
+  @_Concurrency.MainActor(unsafe) public var close: () -> Swift.Void
+  @_Concurrency.MainActor(unsafe) public var sponsorDetailsTapped: (miamCore.Sponsor) -> Swift.Void
+  @_Concurrency.MainActor(unsafe) public init(headerContent: HeaderContent, ingredientsContent: IngredientsContent, stepsContent: StepsContent, footerContent: FooterContent, recipeId: Swift.String, isForMealPlanner: Swift.Bool = false, sponsorDetailsTapped: @escaping (miamCore.Sponsor) -> Swift.Void, close: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public init(headerContent: HeaderContent, ingredientsContent: IngredientsContent, stepsContent: StepsContent, footerContent: FooterContent, vmRecipe: MiamIOSFramework.RecipeCardVM, isForMealPlanner: Swift.Bool = false, sponsorDetailsTapped: @escaping (miamCore.Sponsor) -> Swift.Void, close: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework25RecipeDetailsViewTemplateV4bodyQrvp", 0) __<HeaderContent, IngredientsContent, StepsContent, FooterContent>
+}
+public struct RecipeDetailsIngredientsInfos {
+  public let ingredients: [miamCore.Ingredient]
+  public let recipeGuests: Swift.Int
+  public let currentGuests: Swift.Int
+  public let guestUpdating: Swift.Bool
+  public init(ingredients: [miamCore.Ingredient], recipeGuests: Swift.Int, currentGuests: Swift.Int, guestUpdating: Swift.Bool)
+}
+public struct RecipeDetailsHeaderInfos {
+  public let mediaURL: Swift.String?
+  public let title: Swift.String
+  public let difficulty: Swift.Int
+  public let totalTime: Swift.String
+  public let preparationTime: Swift.String
+  public let cookingTime: Swift.String
+  public let restingTime: Swift.String
+  public let isLikeEnabled: Swift.Bool
+  public let recipeId: Swift.String
+  public init(mediaURL: Swift.String?, title: Swift.String, difficulty: Swift.Int, totalTime: Swift.String, preparationTime: Swift.String, cookingTime: Swift.String, restingTime: Swift.String, isLikeEnabled: Swift.Bool, recipeId: Swift.String)
+}
+@available(iOS 14, *)
+public protocol RecipeDetailsStepsViewTemplate {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(activeStep: SwiftUI.Binding<Swift.Int>, steps: [miamCore.RecipeStep]) -> Self.Content
+}
+@available(iOS 14, *)
+public protocol RecipeDetailsIngredientsViewTemplate {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(infos: MiamIOSFramework.RecipeDetailsIngredientsInfos, updateGuestsAction: @escaping (Swift.Int) -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+public protocol RecipeDetailsFooterTemplate {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(pricePerPerson: Swift.String, priceForMeal: Swift.String) -> Self.Content
+}
+@available(iOS 14, *)
+public protocol RecipeDetailsHeaderViewTemplate {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(infos: MiamIOSFramework.RecipeDetailsHeaderInfos, showTitleInHeader: SwiftUI.Binding<Swift.Bool>) -> Self.Content
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct LikeButton : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(recipeId: Swift.String)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework10LikeButtonV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public protocol MealPlannerRecap {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(numberOfMeals: Swift.Int, totalPrice: MiamIOSFramework.Price, onTapGesture: @escaping () -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MyMealsView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init()
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework11MyMealsViewV4bodyQrvp", 0) __
+}
+public enum MiamIcon : Swift.String {
+  case arrow
+  case back
+  case bin
+  case bucket
+  case caret
+  case greyCarey
+  case cart
+  case check
+  case greyChevronDown
+  case chevronDown
+  case clock
+  case cookHat
+  case cross
+  case easy
+  case filters
+  case hard
+  case heart
+  case help
+  case ideeRepas
+  case like
+  case likeFilled
+  case mid
+  case minus
+  case noResults
+  case people
+  case plus
+  case plusGreen
+  case print
+  case rightArrow
+  case search
+  case sync
+  case whisk
+  case difficultyLow
+  case difficultyMedium
+  case difficultyHigh
+  case yellowUnderline
+  case look
+  case preferences
+  case empty
+  case budgetBackground
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(iOS 14, *)
+public struct SimpleQuadCurve : SwiftUI.Shape {
+  public func path(in rect: CoreFoundation.CGRect) -> SwiftUI.Path
+  public typealias AnimatableData = SwiftUI.EmptyAnimatableData
+  public typealias Body = SwiftUI._ShapeView<MiamIOSFramework.SimpleQuadCurve, SwiftUI.ForegroundStyle>
+}
+extension miamCore.Sponsor {
+  public var name: Swift.String {
+    get
+  }
+  public var logoURL: Foundation.URL? {
+    get
+  }
+}
+@available(iOS 14, *)
+public struct MiamBudgetForm : MiamIOSFramework.MealPlannerForm {
+  public init()
+  public func content(budgetInfos: SwiftUI.Binding<MiamIOSFramework.BudgetInfos>, activelyUpdatingTextField: SwiftUI.Binding<Swift.Bool>, isFetchingRecipes: Swift.Bool, onFormValidated: @escaping (MiamIOSFramework.BudgetInfos) -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A10BudgetFormV7content11budgetInfos25activelyUpdatingTextField17isFetchingRecipes02onD9ValidatedQr7SwiftUI7BindingVyAA0cG0VG_AKySbGSbyAMctF", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct RecipeDetailsFooter : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(recipeVM: MiamIOSFramework.RecipeCardVM, buy: @escaping () -> Swift.Void, goToPreview: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework19RecipeDetailsFooterV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct DefaultRecipeDetailFooterView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework29DefaultRecipeDetailFooterViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public enum MiamColor : Swift.String {
+  case black
+  case black20
+  case border
+  case borderLight
+  case danger
+  case grey
+  case greySurface
+  case info
+  case lightGrey
+  case musterd
+  case neutralGrey
+  case primary
+  case primaryDark
+  case primaryLight
+  case primaryLighter
+  case primaryText
+  case secondary
+  case secondaryText
+  case success
+  case ternary
+  case unpureWhite
+  case warning
+  case white
+  case greyLighter
+  case lightGreyBackground
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(iOS 14, *)
+public protocol MealPlannerForm {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(budgetInfos: SwiftUI.Binding<MiamIOSFramework.BudgetInfos>, activelyUpdatingTextField: SwiftUI.Binding<Swift.Bool>, isFetchingRecipes: Swift.Bool, onFormValidated: @escaping (MiamIOSFramework.BudgetInfos) -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerRecipeCardLoading : MiamIOSFramework.MealPlannerRecipeCardLoading {
+  public init()
+  public func content() -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A28MealPlannerRecipeCardLoadingV7contentQryF", 0) __
+}
+@available(iOS 14, *)
+public class ItemSelectorVM : Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.ItemSelectorContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.ItemSelectorContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($selectedItem) public var selectedItem: miamCore.BasketPreviewLine? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $selectedItem: Combine.Published<miamCore.BasketPreviewLine?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  final public let sharedInstance: miamCore.ItemSelectorViewModel
+  final public let routeService: miamCore.RouteService
+  public init()
+  public func returnToPreview()
+  public func chooseItem(selectedItem: miamCore.BasketPreviewLine, index: Swift.Int)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct ItemSelector : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(recipeId: Swift.String, onItemSelected: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework12ItemSelectorV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public protocol MealPlannerBasketPreviewFooter {
+  associatedtype Content : SwiftUI.View
+  func content(actions: MiamIOSFramework.BasketPreviewFooterActions) -> Self.Content
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerRecipePlaceholder : MiamIOSFramework.MealPlannerRecipePlaceholder {
+  public init()
+  public func content(onTapGesture: @escaping () -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A28MealPlannerRecipePlaceholderV7content12onTapGestureQryyc_tF", 0) __
+}
+@available(iOS 14, *)
+public protocol RecipeCardLoading {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content() -> Self.Content
+}
+@available(iOS 14, *)
+public struct MiamBudgetPlannerEmpty : MiamIOSFramework.MealPlannerEmpty {
+  public init()
+  public func content(bugetInfos: MiamIOSFramework.BudgetInfos, reason: Swift.String) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A18BudgetPlannerEmptyV7content10bugetInfos6reasonQrAA0cH0V_SStF", 0) __
+}
+public struct FakeRecipe {
+  public init()
+  public func createRandomFakeRecipe() -> miamCore.Recipe
+  public func createRandomFakeRecipeInfos() -> MiamIOSFramework.RecipeInfos
+  public func createListOfRandomRecipeInfos() -> [MiamIOSFramework.RecipeInfos]
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class PreferencesSearchVM : miamCore.PreferencesSearchViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.PreferencesSearchContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.PreferencesSearchContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($tagsSuggestions) public var tagsSuggestions: [miamCore.Tag] {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $tagsSuggestions: Combine.Published<[miamCore.Tag]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension Swift.String {
+  public func capitalizingFirstLetter() -> Swift.String
+  public mutating func capitalizeFirstLetter()
+}
+public struct BudgetRecipeCardActions {
+  public init(recipeTapped: @escaping (Swift.String) -> Swift.Void, removeTapped: (() -> Swift.Void)?, replaceTapped: (() -> Swift.Void)?)
+  public let recipeTapped: (Swift.String) -> Swift.Void
+  public let removeTapped: (() -> Swift.Void)?
+  public let replaceTapped: (() -> Swift.Void)?
+}
+@available(iOS 14, *)
+public struct MiamTheme {
+  public static let shared: MiamIOSFramework.MiamTheme
+}
+@_hasMissingDesignatedInitializers public class RecipeCardText {
+  public static let sharedInstance: MiamIOSFramework.RecipeCardText
+  public var recipeFlag: Swift.String
+  @objc deinit
+}
+public enum MiamNeutralColor : Swift.String {
+  case lightBackground
+  case lightBorder
+  case primary
+  case primaryInverse
+  case textNegative
+  case textPrimary
+  case textPrimaryInverse
+  case textDisabled
+  case errorBackground
+  case textSuccess
+  case lightBackgroundSuccess
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct FavoritesView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(_ browseCatalogAction: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework13FavoritesViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct PreferencesView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(onAddTagTapped: @escaping () -> Swift.Void, closeTapped: @escaping () -> Swift.Void, applyPreferencesTapped: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework15PreferencesViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MealPlannerRecapView<Template> : SwiftUI.View where Template : MiamIOSFramework.MealPlannerRecap {
+  @_Concurrency.MainActor(unsafe) public init(template: Template, onTapGesture: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework20MealPlannerRecapViewV4bodyQrvp", 0) __<Template>
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class PriceVM : miamCore.RecipePricingViewModel, Combine.ObservableObject {
+  @objc override dynamic public init()
+  public var formattedPricePerPerson: Swift.String {
+    get
+  }
+  public var formattedTotalPrice: Swift.String {
+    get
+  }
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+public struct CatalogPackage : Swift.Identifiable {
+  public var id: Swift.String {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public var subtitle: Swift.String? {
+    get
+  }
+  public var recipes: [miamCore.Recipe] {
+    get
+  }
+  public typealias ID = Swift.String
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class CatalogVM : miamCore.CatalogViewModel, Foundation.ObservableObject {
+  @objc override dynamic public init()
+  convenience public init(categoryID: Swift.String, title: Swift.String)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct BasketPreviewView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(recipeId: Swift.String, recipeVm: miamCore.RecipeViewModel, title: Swift.String? = nil, goToDetail: @escaping (miamCore.RecipeViewModel, Swift.Bool) -> Swift.Void, close: @escaping () -> Swift.Void, goToItemSelector: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework17BasketPreviewViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct CatalogEmptyView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework16CatalogEmptyViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct CatalogView : SwiftUI.View {
+  @SwiftUI.ObservedObject @_projectedValueProperty($catalog) @_Concurrency.MainActor(unsafe) public var catalog: MiamIOSFramework.CatalogVM {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  @_Concurrency.MainActor(unsafe) public var $catalog: SwiftUI.ObservedObject<MiamIOSFramework.CatalogVM>.Wrapper {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var willNavigateTo: ((miamCore.CatalogContent, Swift.String, MiamIOSFramework.CatalogVM) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public init(usesPreferences: Swift.Bool = false, closeCatalogAction: (() -> Swift.Void)? = nil, launchMealPlanner: (() -> Swift.Void)? = nil, recipesListColumns: Swift.Int = 1, recipesListSpacing: CoreFoundation.CGFloat = 12, recipeCardHeight: CoreFoundation.CGFloat = 400, willNavigateTo: ((miamCore.CatalogContent, Swift.String, MiamIOSFramework.CatalogVM) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public init(categoryId: Swift.String, title: Swift.String, usesPreferences: Swift.Bool = false, closeCatalogAction: (() -> Swift.Void)? = nil, launchMealPlanner: (() -> Swift.Void)? = nil, recipesListColumns: Swift.Int = 1, recipesListSpacing: CoreFoundation.CGFloat = 12, recipeCardHeight: CoreFoundation.CGFloat = 400, willNavigateTo: ((miamCore.CatalogContent, Swift.String, MiamIOSFramework.CatalogVM) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public init(catalogViewModel: MiamIOSFramework.CatalogVM, usesPreferences: Swift.Bool = false, closeCatalogAction: (() -> Swift.Void)? = nil, recipesListColumns: Swift.Int = 1, recipesListSpacing: CoreFoundation.CGFloat = 12, recipeCardHeight: CoreFoundation.CGFloat = 400, willNavigateTo: ((miamCore.CatalogContent, Swift.String, MiamIOSFramework.CatalogVM) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework11CatalogViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct CatalogPackageRow : SwiftUI.View {
+  public init(package: MiamIOSFramework.CatalogPackage, recipeCardHeight: CoreFoundation.CGFloat, showRecipes: @escaping (MiamIOSFramework.CatalogPackage) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework17CatalogPackageRowV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public class PreferencesVM : Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.PreferencesContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.PreferencesContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public var diets: [miamCore.CheckableTag]
+  public var equipments: [miamCore.CheckableTag]
+  public var ingredients: [miamCore.CheckableTag]
+  public init()
+  public func addTag(_ tag: miamCore.Tag)
+  public func updateGuestsNumber(_ numberOfGuests: Swift.Int)
+  public func togglePreference(_ preference: miamCore.CheckableTag)
+  public func resetPreferences()
+  public func applyPreferences()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct RecipeCarouselView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public let index: Swift.Int
+  @_Concurrency.MainActor(unsafe) public init(productId: Swift.String? = nil, criteria: miamCore.SuggestionsCriteria? = nil, numberOfResults: Swift.Int)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework18RecipeCarouselViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerBasketPreviewSectionTitle : MiamIOSFramework.MealPlannerBasketPreviewSectionTitle {
+  public init()
+  public func content(title: Swift.String, showResults: SwiftUI.Binding<Swift.Bool>) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A36MealPlannerBasketPreviewSectionTitleV7content5title11showResultsQrSS_7SwiftUI7BindingVySbGtF", 0) __
+}
+public enum MiamNeutralIcons : Swift.String {
+  case alert
+  case bin
+  case carret
+  case cart
+  case chefHat
+  case collections
+  case filters
+  case fork
+  case guests
+  case heart
+  case help
+  case home
+  case search
+  case time
+  case minus
+  case plus
+  case check
+  case refresh
+  case success
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Localization {
+  public static let recipe: miamCore.Localisation.Recipe
+  public static let basket: miamCore.Localisation.Basket
+  public static let itemSelector: miamCore.Localisation.ItemSelector
+  public static let catalog: miamCore.Localisation.Catalog
+  public static let favorites: miamCore.Localisation.Favorites
+  public static let preferences: miamCore.Localisation.Preferences
+  public static let price: miamCore.Localisation.Price
+  public static let error: miamCore.Localisation.Error
+  public static let counter: miamCore.Localisation.Counter
+  public static let myMeals: miamCore.Localisation.MyMeals
+  public static let sponsorBanner: miamCore.Localisation.SponsorBanner
+  public static let myBudget: miamCore.Localisation.Budget
+}
+public class ClosableBag {
+  public init()
+  public func clear()
+  public func isEmpty() -> Swift.Bool
+  @objc deinit
+}
+@available(iOS 14, *)
+public protocol MealPlannerBasketPreviewSectionTitle {
+  associatedtype Content : SwiftUI.View
+  func content(title: Swift.String, showResults: SwiftUI.Binding<Swift.Bool>) -> Self.Content
+}
+@available(iOS 14, *)
+public struct MiamRecipeDifficulty : SwiftUI.View {
+  public init(difficulty: Swift.Int)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A16RecipeDifficultyV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public protocol MealPlannerRecipeCard {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(recipeInfos: MiamIOSFramework.RecipeInfos, actions: MiamIOSFramework.BudgetRecipeCardActions) -> Self.Content
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class FavoritesVM : miamCore.FavoritePageViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.FavoritePageContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.FavoritePageContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public protocol MealPlannerBasketPreviewRecipeOverview {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(basketPreviewInfos: MiamIOSFramework.BasketPreviewInfos, basketPreviewActions: MiamIOSFramework.BasketPreviewRecipeActions) -> Self.Content
+}
+@available(iOS 14, *)
+public struct MiamBudgetPlannerStickyFooter : MiamIOSFramework.MealPlannerFooter {
+  public init()
+  public func content(budgetInfos: MiamIOSFramework.BudgetInfos, budgetSpent: SwiftUI.Binding<Swift.Double>, validateTapped: @escaping () -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A25BudgetPlannerStickyFooterV7content11budgetInfos0H5Spent14validateTappedQrAA0cI0V_7SwiftUI7BindingVySdGyyctF", 0) __
+}
+public struct MyMealsActionColumnTemplateParameters {
+  public let delete: () -> Swift.Void
+  public let expand: () -> Swift.Void
+}
+@available(iOS 14, *)
+public protocol MealPlannerBasketPreviewEmpty {
+  associatedtype Content : SwiftUI.View
+  func content() -> Self.Content
+}
+@available(iOS 14, *)
+public struct CatalogPreferencesView : SwiftUI.View {
+  public init(close: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework22CatalogPreferencesViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct BasketPreviewSuccessView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(viewModel: MiamIOSFramework.BasketPreviewVM, title: Swift.String?, recipeVm: miamCore.RecipeViewModel, goToDetail: @escaping (miamCore.RecipeViewModel, Swift.Bool) -> Swift.Void, close: @escaping () -> Swift.Void, goToItemSelector: @escaping () -> Swift.Void, isReloading: Swift.Bool, updatingBasketEntryId: Swift.String?)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework24BasketPreviewSuccessViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct BasketPreviewTitleBar : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework21BasketPreviewTitleBarV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public protocol MealPlannerBaskletPreviewSectionProduct {
+  associatedtype Content : SwiftUI.View
+  func content(name: Swift.String, canBeAdded: Swift.Bool, addIngredientAction: @escaping () -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+public struct MiamBudgetCallToAction : MiamIOSFramework.MealPlannerCallToAction {
+  public init()
+  public func content(onTapGesture: @escaping () -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A18BudgetCallToActionV7content12onTapGestureQryyc_tF", 0) __
+}
+@available(iOS 14, *)
+public struct PreferencesFooterView : SwiftUI.View {
+  public init(cancelTapped: @escaping () -> Swift.Void, applyTapped: @escaping () -> Swift.Void, numberOfRecipesFound: Swift.Int)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework21PreferencesFooterViewV4bodyQrvp", 0) __
+}
+@_hasMissingDesignatedInitializers @available(iOS 14, *)
+public class ItemSelectorText {
+  public static let sharedInstance: MiamIOSFramework.ItemSelectorText
+  public var swapProduct: Swift.String
+  public var selectedProduct: Swift.String
+  public var select: Swift.String
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct RecipeModal : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(recipeId: Swift.String, showBasketPreview: Swift.Bool = false, showFooter: Swift.Bool = true, close: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework11RecipeModalV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct TitleBarView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework12TitleBarViewV4bodyQrvp", 0) __
+}
+@_hasMissingDesignatedInitializers @available(iOS 14, *)
+public class Template {
+  public static let sharedInstance: MiamIOSFramework.Template
+  public var asyncImageLoadingTemplate: ((CoreFoundation.CGFloat, CoreFoundation.CGFloat) -> SwiftUI.AnyView)?
+  public var recipeCardTemplate: ((miamCore.Recipe?, Swift.Bool, Swift.Bool, Swift.Bool, @escaping () -> Swift.Void, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var recipeCardLoadingViewTemplate: (() -> SwiftUI.AnyView)?
+  public var counterViewTemplate: ((Swift.Int, Swift.Bool, @escaping () -> Swift.Void, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var priceViewTemplate: ((Swift.Double, Swift.Double) -> SwiftUI.AnyView)?
+  public var currentProductTemplate: ((miamCore.BasketPreviewLine) -> SwiftUI.AnyView)?
+  public var productOptionListTemplate: (([miamCore.BasketPreviewLine], (miamCore.BasketPreviewLine, Swift.Int) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var itemSelectorLoadingViewTemplate: (() -> SwiftUI.AnyView)?
+  public var recipeDetailsTitleBarTemplate: ((Swift.Bool, Swift.String) -> SwiftUI.AnyView)?
+  public var recipeDetailsHeaderTemplate: ((Swift.String?, Swift.String, Swift.Int, Swift.String, SwiftUI.Binding<Swift.Bool>, Swift.Bool, Swift.String) -> SwiftUI.AnyView)?
+  public var recipeDetailInfosTemplate: ((miamCore.Recipe) -> SwiftUI.AnyView)?
+  public var recipeDetailsIngredientsViewTemplate: (([miamCore.Ingredient], Swift.Int, Swift.Int, Swift.Bool, @escaping (Swift.Int) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var recipeDetailStepsViewTemplate: (([miamCore.RecipeStep]) -> SwiftUI.AnyView)?
+  public var recipeDetailFooterTemplate: ((miamCore.Recipe, Swift.Int, Swift.Bool, @escaping () -> Swift.Void, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var recipeTimeViewTemplate: ((Swift.String, Swift.String, Swift.String) -> SwiftUI.AnyView)?
+  public var basketPreviewLoadingViewTemplate: (() -> SwiftUI.AnyView)?
+  public var basketPreviewTitleTemplate: ((Swift.Int) -> SwiftUI.AnyView)?
+  public var basketPreviewHeaderTemplate: ((Swift.String, Foundation.URL?, Swift.String, Swift.String, Swift.Int, Swift.String, Swift.Bool, @escaping (Swift.Int) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var basketPreviewFooterTemplate: ((@escaping () -> Swift.Void, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var basketPreviewRowTemplate: ((Swift.String, Foundation.URL?, Swift.String, Swift.String, Swift.String, Swift.Int, Swift.Int, Swift.String?, @escaping () -> Swift.Void, @escaping () -> Swift.Void, @escaping (Swift.Int) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var ingredientFoldableHeaderTemplate: ((Swift.String, SwiftUI.Binding<Swift.Bool>) -> SwiftUI.AnyView)?
+  public var ingredientNotInBasketRowTemplate: ((Swift.String, (() -> Swift.Void)?) -> SwiftUI.AnyView)?
+  public var catalogLoadingViewTemplate: ((Swift.String) -> SwiftUI.AnyView)?
+  public var catalogSearchViewTemplate: ((@escaping () -> Swift.Void, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var catalogRecipePageNoResultsViewTemplate: ((Swift.String, (() -> Swift.Void)?, Swift.Bool) -> SwiftUI.AnyView)?
+  public var catalogPackageRowTemplate: ((MiamIOSFramework.CatalogPackage, @escaping (MiamIOSFramework.CatalogPackage) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var catalogViewHeaderTemplate: (((() -> Swift.Void)?) -> SwiftUI.AnyView)?
+  public var catalogViewToolbarTemplate: ((Swift.Bool, Swift.Bool, @escaping () -> Swift.Void, @escaping () -> Swift.Void, @escaping () -> Swift.Void, @escaping () -> Swift.Void, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var catalogFiltersViewTemplate: SwiftUI.AnyView?
+  public var catalogFiltersSectionTemplate: ((Swift.String, Swift.Array<miamCore.CatalogFilterOptions>, @escaping (miamCore.CatalogFilterOptions) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var catalogFilterRowTemplate: ((miamCore.CatalogFilterOptions, @escaping (miamCore.CatalogFilterOptions) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var favoritesSuccessViewTemplate: (([miamCore.Recipe], @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var favoritesEmptyViewTemplate: ((@escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var myMealsActionColumnTemplate: ((MiamIOSFramework.MyMealsActionColumnTemplateParameters) -> SwiftUI.AnyView)?
+  public var myMealsLoadingViewTemplate: (() -> SwiftUI.AnyView)?
+  public var myMealsEmptyViewTemplate: (() -> SwiftUI.AnyView)?
+  public var likeButtonTemplate: ((Swift.Bool, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var tagViewTemplate: (([miamCore.Recipe], @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var basketTagListModal: ((SwiftUI.Binding<Swift.Bool>, Foundation.NSArray, MiamIOSFramework.BasketTagVM) -> SwiftUI.AnyView)?
+  public var itemSelectorProductRowTemplate: ((miamCore.BasketPreviewLine, Swift.Bool) -> SwiftUI.AnyView)?
+  public var myMealButtonEmptyViewTemplate: (() -> SwiftUI.AnyView)?
+  public var myMealButtonSuccessViewTemplate: ((Swift.Int, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var preferencesLoadingViewTemplate: (() -> SwiftUI.AnyView)?
+  public var preferencesSuccessViewTemplate: ((Swift.Int, [miamCore.CheckableTag], [miamCore.CheckableTag], [miamCore.CheckableTag], Swift.Int, @escaping (Swift.Int) -> Swift.Void, @escaping (miamCore.CheckableTag) -> Swift.Void, @escaping () -> Swift.Void, @escaping () -> Swift.Void, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var preferenceListItemViewTemplate: ((miamCore.CheckableTag, @escaping (miamCore.CheckableTag) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var preferencesListViewTemplate: ((Swift.String, Swift.String, [miamCore.CheckableTag], @escaping (miamCore.CheckableTag) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var preferencesTagsListViewTemplate: ((Swift.String, Swift.String, [miamCore.CheckableTag], SwiftUI.GeometryProxy, @escaping (miamCore.CheckableTag) -> Swift.Void, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var addTagViewTemplate: ((@escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var preferencesTagViewTemplate: ((miamCore.CheckableTag, @escaping (miamCore.CheckableTag) -> Swift.Void) -> SwiftUI.AnyView)?
+  public var preferencesFooterView: ((@escaping () -> Swift.Void, @escaping () -> Swift.Void, Swift.Int) -> SwiftUI.AnyView)?
+  public var preferencesSearchViewTemplate: ((MiamIOSFramework.PreferencesSearchVM, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  @available(*, deprecated, message: "Not used anymore, views use native navigation bar.")
+  public var titleBarViewTemplate: ((Swift.Bool, (() -> Swift.Void)?, SwiftUI.AnyView) -> SwiftUI.AnyView)?
+  public var recipesListTitleTemplate: ((MiamIOSFramework.CatalogPageTitleTemplateParameters) -> SwiftUI.AnyView)?
+  public var recipesListCategoryTitleTemplate: ((MiamIOSFramework.CatalogPageTitleTemplateParameters) -> SwiftUI.AnyView)?
+  public var recipesListSearchTitleTemplate: ((MiamIOSFramework.CatalogPageTitleTemplateParameters) -> SwiftUI.AnyView)?
+  public var recipeModalTemplate: ((Swift.String, MiamIOSFramework.RecipeCardVM, SwiftUI.Binding<Swift.Bool>, Swift.Bool, @escaping () -> Swift.Void) -> SwiftUI.AnyView)?
+  public var errorTemplate: (() -> SwiftUI.AnyView)?
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MyMealRow : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(myMealViewModel: MiamIOSFramework.MyMealVM, recipeViewModel: MiamIOSFramework.RecipeCardVM, meal: MiamIOSFramework.MyMeal)
+  @_Concurrency.MainActor(unsafe) public init(myMealViewModel: MiamIOSFramework.MyMealVM, meal: MiamIOSFramework.MyMeal)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework9MyMealRowV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct AsyncImage<Content> : SwiftUI.View where Content : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public let url: Foundation.URL
+  @_Concurrency.MainActor(unsafe) public let contentProvider: (SwiftUI.Image) -> Content
+  @_Concurrency.MainActor(unsafe) public init(url: Foundation.URL, contentProvider: @escaping (SwiftUI.Image) -> Content)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework10AsyncImageV4bodyQrvp", 0) __<Content>
+}
+public struct Price {
+  public let price: Swift.Double
+  public let currency: Swift.String
+  public init(price: Swift.Double, currency: Swift.String)
+  public func formattedPrice() -> Swift.String
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct CatalogRecipeCardView<CardTemplate, LoadingTemplate> : SwiftUI.View where CardTemplate : MiamIOSFramework.RecipeCard, LoadingTemplate : MiamIOSFramework.RecipeCardLoading {
+  @_Concurrency.MainActor(unsafe) public var recipe: miamCore.Recipe?
+  @_Concurrency.MainActor(unsafe) public init(_ recipeId: Swift.String, numberOfGuests: Swift.Int? = nil, cardTemplate: CardTemplate, loadingTemplate: LoadingTemplate, showDetails: @escaping (Swift.String) -> Swift.Void, add: @escaping (Swift.String) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public init(_ recipe: miamCore.Recipe, numberOfGuests: Swift.Int? = nil, cardTemplate: CardTemplate, loadingTemplate: LoadingTemplate, showDetails: @escaping (Swift.String) -> Swift.Void, add: @escaping (Swift.String) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework21CatalogRecipeCardViewV4bodyQrvp", 0) __<CardTemplate, LoadingTemplate>
+}
+@available(iOS 14, *)
+extension SwiftUI.Color {
+  public static func miamColor(_ from: MiamIOSFramework.MiamColor) -> SwiftUI.Color
+  public static func miamNeutralColor(_ from: MiamIOSFramework.MiamNeutralColor) -> SwiftUI.Color
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct BudgetPlannerRecipePickerView<SearchTemplate, CardTemplate> : SwiftUI.View where SearchTemplate : MiamIOSFramework.MealPlannerSearch, CardTemplate : MiamIOSFramework.RecipeCard {
+  @_Concurrency.MainActor(unsafe) public init(searchTemplate: SearchTemplate, cardTemplate: CardTemplate, maxBudget: Swift.Double, onRecipeSelected: @escaping (Swift.String) -> Swift.Void, onRecipeTapped: @escaping (Swift.String) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework29BudgetPlannerRecipePickerViewV4bodyQrvp", 0) __<SearchTemplate, CardTemplate>
+}
+public struct MealPlannerBasketPreviewProductInfos {
+  public let price: MiamIOSFramework.Price
+  public let name: Swift.String
+  public let description: Swift.String
+  public let pictureURL: Foundation.URL
+  public let sharedRecipeCount: Swift.Int
+  public let isSubstitutable: Swift.Bool
+  public let pricePerUnit: MiamIOSFramework.Price
+  public let unit: Swift.String
+  public let isLoading: Swift.Bool
+  public init(price: MiamIOSFramework.Price, name: Swift.String, description: Swift.String, pictureURL: Foundation.URL, sharedRecipeCount: Swift.Int, isSubstitutable: Swift.Bool, pricePerUnit: MiamIOSFramework.Price, unit: Swift.String, isLoading: Swift.Bool)
+}
+extension MiamIOSFramework.MealPlannerBasketPreviewProductInfos : Swift.Hashable {
+  public static func == (lhs: MiamIOSFramework.MealPlannerBasketPreviewProductInfos, rhs: MiamIOSFramework.MealPlannerBasketPreviewProductInfos) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct FakeMealPlannerBasketPreviewProductInfos {
+  public init()
+  public func generateSingleRandomInfo() -> MiamIOSFramework.MealPlannerBasketPreviewProductInfos
+  public func createListOfRandomInfos() -> [MiamIOSFramework.MealPlannerBasketPreviewProductInfos]
+}
+@available(iOS 14, *)
+public struct MiamRecipeCard : MiamIOSFramework.RecipeCard {
+  public init()
+  public func content(recipeInfos: MiamIOSFramework.RecipeInfos, actions: MiamIOSFramework.RecipeCardActions) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A10RecipeCardV7content11recipeInfos7actionsQrAA0cG0V_AA0cD7ActionsVtF", 0) __
+}
+@available(iOS 14, *)
+public protocol MealPlannerCallToAction {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(onTapGesture: @escaping () -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+extension SwiftUI.Image {
+  public static func miamImage(icon: MiamIOSFramework.MiamIcon) -> SwiftUI.Image
+}
+@available(iOS 14, *)
+extension SwiftUI.Image {
+  public static func miamNeutralImage(icon: MiamIOSFramework.MiamNeutralIcons) -> SwiftUI.Image
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct RecipeCardView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var criteria: miamCore.SuggestionsCriteria?
+  @_Concurrency.MainActor(unsafe) public var recipeId: Swift.String?
+  @_Concurrency.MainActor(unsafe) public var recipe: miamCore.Recipe?
+  @_Concurrency.MainActor(unsafe) public init(criteria: miamCore.SuggestionsCriteria, showMealIdeaTag: Swift.Bool = true, recipeCardHeight: CoreFoundation.CGFloat = 400.0)
+  @_Concurrency.MainActor(unsafe) public init(recipeId: Swift.String, showMealIdeaTag: Swift.Bool = true, recipeCardHeight: CoreFoundation.CGFloat = 400.0)
+  @_Concurrency.MainActor(unsafe) public init(recipe: miamCore.Recipe, showMealIdeaTag: Swift.Bool = true, recipeCardHeight: CoreFoundation.CGFloat = 400.0)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework14RecipeCardViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct RecipeCardEmptyView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework19RecipeCardEmptyViewV4bodyQrvp", 0) __
+}
+@available(iOS 13, *)
+public protocol MealPlannerFooter {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(budgetInfos: MiamIOSFramework.BudgetInfos, budgetSpent: SwiftUI.Binding<Swift.Double>, validateTapped: @escaping () -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerRecipeCard : MiamIOSFramework.MealPlannerRecipeCard {
+  public init()
+  public func content(recipeInfos: MiamIOSFramework.RecipeInfos, actions: MiamIOSFramework.BudgetRecipeCardActions) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A21MealPlannerRecipeCardV7content11recipeInfos7actionsQrAA0eI0V_AA06BudgeteF7ActionsVtF", 0) __
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class MealPlannerFormVM : miamCore.MealPlannerFormViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($budgetInfos) public var budgetInfos: MiamIOSFramework.BudgetInfos {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $budgetInfos: Combine.Published<MiamIOSFramework.BudgetInfos>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.MealPlannerFormContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.MealPlannerFormContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($errorAppeared) public var errorAppeared: Swift.Bool {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $errorAppeared: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public protocol MealPlannerBasketPreviewProduct {
+  associatedtype Content : SwiftUI.View
+  func content(quantity: SwiftUI.Binding<Swift.Int>, productInfo: MiamIOSFramework.MealPlannerBasketPreviewProductInfos, actions: MiamIOSFramework.MealPlannerBudgetPreviewProductActions) -> Self.Content
+}
+@available(iOS 14, *)
+public class BasketTagVM : miamCore.BasketTagViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($recipeList) public var recipeList: Foundation.NSArray? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $recipeList: Combine.Published<Foundation.NSArray?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init(productExtId: Swift.String)
+  @objc override dynamic public func goToDetail(recipe: miamCore.Recipe)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerBasketPreviewFooter : MiamIOSFramework.MealPlannerBasketPreviewFooter {
+  public init()
+  public func content(actions: MiamIOSFramework.BasketPreviewFooterActions) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A30MealPlannerBasketPreviewFooterV7content7actionsQrAA0efG7ActionsV_tF", 0) __
+}
+@available(iOS 14, *)
+public struct CounterView : SwiftUI.View {
+  @SwiftUI.State @_projectedValueProperty($count) public var count: Swift.Int {
+    get
+    @available(iOS 14, *)
+    nonmutating set
+    @available(iOS 14, *)
+    nonmutating _modify
+  }
+  public var $count: SwiftUI.Binding<Swift.Int> {
+    get
+  }
+  public var onCounterChanged: (Swift.Int) -> Swift.Void
+  public var lightMode: Swift.Bool
+  public var maxValue: Swift.Int?
+  public var minValue: Swift.Int?
+  public var isLoading: Swift.Bool
+  public var isDisable: Swift.Bool
+  public init(count: Swift.Int, onCounterChanged: @escaping (Swift.Int) -> Swift.Void)
+  public init(count: Swift.Int, lightMode: Swift.Bool, onCounterChanged: @escaping (Swift.Int) -> Swift.Void)
+  public init(count: Swift.Int, lightMode: Swift.Bool, onCounterChanged: @escaping (Swift.Int) -> Swift.Void, isLoading: Swift.Bool = false, isDisable: Swift.Bool = false, minValue: Swift.Int? = nil, maxValue: Swift.Int? = nil)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework11CounterViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct PreferencesTagsListView : SwiftUI.View {
+  public init(title: Swift.String, subtitle: Swift.String, tags: [miamCore.CheckableTag], geometry: SwiftUI.GeometryProxy, onToggleTag: @escaping (miamCore.CheckableTag) -> Swift.Void, onAddTagTapped: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public func displayTags(in geometry: SwiftUI.GeometryProxy) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework23PreferencesTagsListViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct AddTagView : SwiftUI.View {
+  public let onTapped: () -> Swift.Void
+  public init(onTapped: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework10AddTagViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct PreferenceTagView : SwiftUI.View {
+  public let tag: miamCore.CheckableTag
+  public let onToggleTag: (miamCore.CheckableTag) -> Swift.Void
+  public var tagName: Swift.String {
+    get
+  }
+  public var backgroundColor: SwiftUI.Color {
+    get
+  }
+  public var foregroundColor: SwiftUI.Color {
+    get
+  }
+  public init(tag: miamCore.CheckableTag, onToggleTag: @escaping (miamCore.CheckableTag) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework17PreferenceTagViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct RecipeDetailsStepRow : SwiftUI.View {
+  public init(index: Swift.Int, step: miamCore.RecipeStep, isCheck: Swift.Bool, onToogleCheckbox: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework20RecipeDetailsStepRowV4bodyQrvp", 0) __
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class MyMealButtonVM : miamCore.MyMealButtonViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.MyMealButtonContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.MyMealButtonContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public var mealsCount: Swift.Int
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct CatalogCategoriesView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var goToCategory: ((MiamIOSFramework.CatalogPackage) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public init(recipeCardHeight: Swift.Double = 400.0, goToCategory: ((MiamIOSFramework.CatalogPackage) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework21CatalogCategoriesViewV4bodyQrvp", 0) __
+}
+public struct BudgetInfos {
+  public var moneyBudget: Swift.Double
+  public var numberOfGuests: Swift.Int
+  public var numberOfMeals: Swift.Int
+  public var maxRecipesForBudget: Swift.Int
+  public init(moneyBudget: Swift.Double, numberOfGuests: Swift.Int, numberOfMeals: Swift.Int, maxRecipesForBudget: Swift.Int = 99)
+}
+extension MiamIOSFramework.BudgetInfos : Swift.Equatable {
+  public static func == (lhs: MiamIOSFramework.BudgetInfos, rhs: MiamIOSFramework.BudgetInfos) -> Swift.Bool
+}
+public struct CatalogPageTitleTemplateParameters {
+  public let title: Swift.String
+  public var subtitle: Swift.String?
+}
+@available(iOS 14, *)
+public struct RecipeDetailsHeaderView : SwiftUI.View {
+  public init(mediaURL: Swift.String?, title: Swift.String, difficulty: Swift.Int, totalTime: Swift.String, showTitleInHeader: SwiftUI.Binding<Swift.Bool>, isLikeEnabled: Swift.Bool, recipeId: Swift.String)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework23RecipeDetailsHeaderViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MealPlannerPlannerView<ToolbarTemplate, FooterTemplate, LoadingTemplate, EmptyTemplate, CardTemplate, LoadingCardTemplate, PlaceholderCardTemplate> : SwiftUI.View where ToolbarTemplate : MiamIOSFramework.MealPlannerToolbar, FooterTemplate : MiamIOSFramework.MealPlannerFooter, LoadingTemplate : MiamIOSFramework.MealPlannerLoading, EmptyTemplate : MiamIOSFramework.MealPlannerEmpty, CardTemplate : MiamIOSFramework.MealPlannerRecipeCard, LoadingCardTemplate : MiamIOSFramework.MealPlannerRecipeCardLoading, PlaceholderCardTemplate : MiamIOSFramework.MealPlannerRecipePlaceholder {
+  @_Concurrency.MainActor(unsafe) public init(toolbarTemplate: ToolbarTemplate, footerTemplate: FooterTemplate, loadingTemplate: LoadingTemplate, emptyTemplate: EmptyTemplate, recipeCardTemplate: CardTemplate, loadingCardTemplate: LoadingCardTemplate, placeholderCardTemplate: PlaceholderCardTemplate, selectedRecipe: SwiftUI.Binding<Swift.String?>, budgetInfos: MiamIOSFramework.BudgetInfos? = nil, showRecipe: @escaping (Swift.String) -> Swift.Void, validateRecipes: @escaping () -> Swift.Void, replaceRecipe: @escaping (Swift.String) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework011MealPlannerD4ViewV4bodyQrvp", 0) __<ToolbarTemplate, FooterTemplate, LoadingTemplate, EmptyTemplate, CardTemplate, LoadingCardTemplate, PlaceholderCardTemplate>
+}
+extension Foundation.Bundle {
+  public static let miamBundle: Foundation.Bundle
+}
+public struct RecipeCardActions {
+  public let addToBasket: (Swift.String) -> Swift.Void
+  public let showDetails: (Swift.String) -> Swift.Void
+  public init(addToBasket: @escaping (Swift.String) -> Swift.Void, showDetails: @escaping (Swift.String) -> Swift.Void)
+}
+@available(iOS 14, *)
+public struct CatalogSearchView : SwiftUI.View {
+  public init(close: @escaping () -> Swift.Void, search: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework17CatalogSearchViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerBasketPreviewLoading : MiamIOSFramework.MealPlannerBasketPreviewLoading {
+  public init()
+  public func content() -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A31MealPlannerBasketPreviewLoadingV7contentQryF", 0) __
+}
+extension miamCore.BasketEntry : Swift.Identifiable {
+  public typealias ID = Swift.String
+}
+@_hasMissingDesignatedInitializers public class RecipeDetailsText {
+  public static let sharedInstance: MiamIOSFramework.RecipeDetailsText
+  public var alreadyInCart: Swift.String
+  public var checkBasketPreview: Swift.String
+  public var difficultyEasy: Swift.String
+  public var difficultyMid: Swift.String
+  public var difficultyHard: Swift.String
+  public var preparationTime: Swift.String
+  public var cookingTime: Swift.String
+  public var restingTime: Swift.String
+  @objc deinit
+}
+@available(iOS 14, *)
+public struct RecipeCardLoadingView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework21RecipeCardLoadingViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct SponsorDetail : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public let sponsor: miamCore.Sponsor
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework13SponsorDetailV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public protocol MealPlannerRecipePlaceholder {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(onTapGesture: @escaping () -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+public struct RecipeDetailsIngredientRow : SwiftUI.View {
+  public init(ingredientName: Swift.String, quantity: Swift.String)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework26RecipeDetailsIngredientRowV4bodyQrvp", 0) __
+}
+extension miamCore.Closable {
+  public func addTo(closableBag: MiamIOSFramework.ClosableBag)
+}
+@available(iOS 14, *)
+public protocol MealPlannerEmpty {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(bugetInfos: MiamIOSFramework.BudgetInfos, reason: Swift.String) -> Self.Content
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class LikeButtonVM : miamCore.LikeButtonViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($isLiked) public var isLiked: Swift.Bool {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $isLiked: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.RecipeLikeContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.RecipeLikeContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class MealPlannerBasketPreviewVM : miamCore.MealPlannerBasketPreviewViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.DefaultBasketPreviewContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.DefaultBasketPreviewContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($meals) public var meals: [miamCore.BasketPreviewLine] {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $meals: Combine.Published<[miamCore.BasketPreviewLine]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($totalPrice) public var totalPrice: Swift.Double {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $totalPrice: Combine.Published<Swift.Double>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class BasketPreviewVM : miamCore.BasketPreviewViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($basketPreviewLine) public var basketPreviewLine: miamCore.BasketPreviewLine? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $basketPreviewLine: Combine.Published<miamCore.BasketPreviewLine?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.BasketPreviewContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.BasketPreviewContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($isLoading) public var isLoading: Swift.Bool {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $isLoading: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init(recipeId: Swift.String?)
+  public var pictureURL: Foundation.URL? {
+    get
+  }
+  public var basketTitle: Swift.String {
+    get
+  }
+  public var basketDescription: Swift.String {
+    get
+  }
+  public var pricePerGuest: Swift.String {
+    get
+  }
+  public var numberOfGuests: Swift.Int {
+    get
+  }
+  public var price: Swift.Double {
+    get
+  }
+  public var numberOfproductsInBasket: Swift.Int {
+    get
+  }
+  public var productsInBasket: [miamCore.BasketEntry] {
+    get
+  }
+  public var productsNotFound: [miamCore.BasketEntry] {
+    get
+  }
+  public var productsOftenDeleted: [miamCore.BasketEntry] {
+    get
+  }
+  public var productsRemoved: [miamCore.BasketEntry] {
+    get
+  }
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+public struct BasketPreviewRecipeActions {
+  public let delete: () -> Swift.Void
+  public let expand: () -> Swift.Void
+  public let updateGuests: (Swift.Int) -> Swift.Void
+  public let onRecipeTapped: (Swift.String) -> Swift.Void
+  public init(delete: @escaping () -> Swift.Void, expand: @escaping () -> Swift.Void, updateGuests: @escaping (Swift.Int) -> Swift.Void, onRecipeTapped: @escaping (Swift.String) -> Swift.Void)
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class MealPlannerRecapVM : miamCore.MealPlannerRecapViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($numberOfMeals) public var numberOfMeals: Swift.Int {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $numberOfMeals: Combine.Published<Swift.Int>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($totalPrice) public var totalPrice: Swift.Double {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $totalPrice: Combine.Published<Swift.Double>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.MealPlannerRecapContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.MealPlannerRecapContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public protocol MealPlannerSuccess {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(budgetPlannerInfos: MiamIOSFramework.MealPlannerInfos, onValidate: @escaping () -> Swift.Void) -> Self.Content
+}
+extension miamCore.BasketPreviewLine : Swift.Identifiable {
+  public static func fromBasketEntry(entry: miamCore.BasketEntry) -> miamCore.BasketPreviewLine
+  public var pictureURL: Foundation.URL? {
+    get
+  }
+  public var basketTitle: Swift.String {
+    get
+  }
+  public var basketDescription: Swift.String {
+    get
+  }
+  public var pricePerGuest: Swift.String {
+    get
+  }
+  public var numberOfGuests: Swift.Int {
+    get
+  }
+  public var productBrand: Swift.String {
+    get
+  }
+  public var productDescription: Swift.String {
+    get
+  }
+  public var numberOfproductsInBasket: Swift.Int {
+    get
+  }
+  public var canBeReplaced: Swift.Bool {
+    get
+  }
+  public var productsInBasket: [miamCore.BasketEntry] {
+    get
+  }
+  public var productsNotFound: [miamCore.BasketEntry] {
+    get
+  }
+  public var productsOftenDeleted: [miamCore.BasketEntry] {
+    get
+  }
+  public var productsRemoved: [miamCore.BasketEntry] {
+    get
+  }
+  public typealias ID = Swift.String?
+}
+@available(iOS 14, *)
+public struct TitleBigFontStyle {
+}
+@available(iOS 14, *)
+public struct TitleFontStyle {
+}
+@available(iOS 14, *)
+public struct TitleMediumFontStyle {
+}
+@available(iOS 14, *)
+public struct TitleSmallFontStyle {
+}
+@available(iOS 14, *)
+public struct TitleExtraSmallFontStyle {
+}
+@available(iOS 14, *)
+public struct TitleExtraSmallMediumFontStyle {
+}
+@available(iOS 14, *)
+public struct SubtitleFontStyle {
+}
+@available(iOS 14, *)
+public struct BodyBigFontStyle {
+}
+@available(iOS 14, *)
+public struct BodyBigBoldFontStyle {
+}
+@available(iOS 14, *)
+public struct BodyBigLightFontStyle {
+}
+@available(iOS 14, *)
+public struct BodyFontStyle {
+}
+@available(iOS 14, *)
+public struct BodyBoldFontStyle {
+}
+@available(iOS 14, *)
+public struct BodyMediumFontStyle {
+}
+@available(iOS 14, *)
+public struct BodyMediumBoldFontStyle {
+}
+@available(iOS 14, *)
+public struct BodySmallFontStyle {
+}
+@available(iOS 14, *)
+public struct BodySmallBoldFontStyle {
+}
+@available(iOS 14, *)
+public struct BodyExtraSmallFontStyle {
+}
+@available(iOS 14, *)
+public struct MiamFontStyleProvider {
+  public var titleStyle: MiamIOSFramework.TitleFontStyle
+  public var titleBigStyle: MiamIOSFramework.TitleBigFontStyle
+  public var titleMediumStyle: MiamIOSFramework.TitleMediumFontStyle
+  public var titleSmallStyle: MiamIOSFramework.TitleSmallFontStyle
+  public var titleExtraSmallStyle: MiamIOSFramework.TitleExtraSmallFontStyle
+  public var titleExtraSmallMediumStyle: MiamIOSFramework.TitleExtraSmallMediumFontStyle
+  public var subtitleStyle: MiamIOSFramework.SubtitleFontStyle
+  public var bodyStyle: MiamIOSFramework.BodyFontStyle
+  public var bodyBigStyle: MiamIOSFramework.BodyBigFontStyle
+  public var bodyBigLightStyle: MiamIOSFramework.BodyBigLightFontStyle
+  public var bodyBigBoldStyle: MiamIOSFramework.BodyBigBoldFontStyle
+  public var bodyBoldStyle: MiamIOSFramework.BodyBoldFontStyle
+  public var bodyMediumStyle: MiamIOSFramework.BodyMediumFontStyle
+  public var bodyMediumBoldStyle: MiamIOSFramework.BodyMediumBoldFontStyle
+  public var bodySmallStyle: MiamIOSFramework.BodySmallFontStyle
+  public var bodySmallBoldStyle: MiamIOSFramework.BodySmallBoldFontStyle
+  public var bodyExtraSmallStyle: MiamIOSFramework.BodyExtraSmallFontStyle
+}
+@available(iOS 14, *)
+public protocol MealPlannerLoading {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content() -> Self.Content
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MealPlannerRecipeCardView<CardTemplate, CardLoadingTemplate> : SwiftUI.View where CardTemplate : MiamIOSFramework.MealPlannerRecipeCard, CardLoadingTemplate : MiamIOSFramework.MealPlannerRecipeCardLoading {
+  @_Concurrency.MainActor(unsafe) public init(recipeId: Swift.String, price: MiamIOSFramework.Price, recipeCardTemplate: CardTemplate, recipeCardLoadingTemplate: CardLoadingTemplate, actions: MiamIOSFramework.BudgetRecipeCardActions)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework25MealPlannerRecipeCardViewV4bodyQrvp", 0) __<CardTemplate, CardLoadingTemplate>
+}
+@available(iOS 14, *)
+public struct MainRowContainer : SwiftUI.ViewModifier {
+  @_Concurrency.MainActor(unsafe) public func body(content: MiamIOSFramework.MainRowContainer.Content) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework16MainRowContainerV4body7contentQr7SwiftUI21_ViewModifier_ContentVyACG_tF", 0) __
+}
+@available(iOS 14, *)
+extension SwiftUI.View {
+  public func mainRowContainer() -> some SwiftUI.View
+  
+}
+@available(iOS 14, *)
+public class MealPlannerMealsVM : miamCore.MealPlannerMealsViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($meals) public var meals: [miamCore.MealPlannerRecipe?] {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $meals: Combine.Published<[miamCore.MealPlannerRecipe?]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($totalPrice) public var totalPrice: Swift.Double {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $totalPrice: Combine.Published<Swift.Double>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.MealPlannerMealsContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.MealPlannerMealsContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init()
+  public func removeRecipe(_ withId: Swift.String)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public protocol MealPlannerBasketPreviewLoading {
+  associatedtype Content : SwiftUI.View
+  func content() -> Self.Content
+}
+@available(iOS 14, *)
+public protocol MealPlannerRecipeCardLoading {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content() -> Self.Content
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct RecipesListView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var browseCatalogAction: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public init(title: Swift.String, recipesListColumns: Swift.Int, recipeListSpacing: CoreFoundation.CGFloat, recipeCardHeight: CoreFoundation.CGFloat, browseCatalogAction: (() -> Swift.Void)? = nil, showingFavorites: Swift.Bool, specialTitleTemplate: ((MiamIOSFramework.CatalogPageTitleTemplateParameters) -> SwiftUI.AnyView)? = nil)
+  @_Concurrency.MainActor(unsafe) public init(categoryId: Swift.String, categoryTitle: Swift.String, categorySubtitle: Swift.String?, recipesListColumns: Swift.Int, recipeListSpacing: CoreFoundation.CGFloat, recipeCardHeight: CoreFoundation.CGFloat, browseCatalogAction: (() -> Swift.Void)? = nil, showingFavorites: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework15RecipesListViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct PriceView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(recipeId: Swift.String, guestNumber: Swift.Int)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework9PriceViewV4bodyQrvp", 0) __
+}
+extension miamCore.Recipe {
+  public var title: Swift.String {
+    get
+  }
+  public var difficulty: Swift.Int {
+    get
+  }
+  public var pictureURL: Foundation.URL {
+    get
+  }
+}
+extension miamCore.Recipe : Swift.Identifiable {
+  public typealias ID = Swift.String
+}
+@available(iOS 14, *)
+public struct MiamBudgetSearch : MiamIOSFramework.MealPlannerSearch {
+  public init()
+  public func content(searchText: SwiftUI.Binding<Swift.String>, filtersTapped: @escaping () -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A12BudgetSearchV7content10searchText13filtersTappedQr7SwiftUI7BindingVySSG_yyctF", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct CatalogFiltersView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(singletonFilterViewModel: miamCore.SingletonFilterViewModel, apply: @escaping () -> Swift.Void, close: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework18CatalogFiltersViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public protocol RecipeCard {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(recipeInfos: MiamIOSFramework.RecipeInfos, actions: MiamIOSFramework.RecipeCardActions) -> Self.Content
+}
+@available(iOS 14, *)
+public protocol MealPlannerSearch {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(searchText: SwiftUI.Binding<Swift.String>, filtersTapped: @escaping () -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+public struct MiamBudgetPlannerLoading : MiamIOSFramework.MealPlannerLoading {
+  public init()
+  public func content() -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A20BudgetPlannerLoadingV7contentQryF", 0) __
+}
+@_hasMissingDesignatedInitializers @available(iOS 14, *)
+public class CounterColor {
+  public static let sharedInstance: MiamIOSFramework.CounterColor
+  public var lessButtonBackgroundDisableColor: SwiftUI.Color
+  public var lessButtonBackgroundColor: SwiftUI.Color
+  public var lessIconColor: SwiftUI.Color
+  public var plusButtonBackgroundDisableColor: SwiftUI.Color
+  public var plusButtonBackgroundColor: SwiftUI.Color
+  public var plusIconColor: SwiftUI.Color
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct BasketTagView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(itemId: Swift.String)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework13BasketTagViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct MealPlannerCallToActionView<Template> : SwiftUI.View where Template : MiamIOSFramework.MealPlannerCallToAction {
+  public init(template: Template, onTapGesture: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework27MealPlannerCallToActionViewV4bodyQrvp", 0) __<Template>
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerBasketPreviewSectionProduct : MiamIOSFramework.MealPlannerBaskletPreviewSectionProduct {
+  public init()
+  public func content(name: Swift.String, canBeAdded: Swift.Bool, addIngredientAction: @escaping () -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A38MealPlannerBasketPreviewSectionProductV7content4name10canBeAdded19addIngredientActionQrSS_SbyyctF", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MealPlannerBasketPreviewView<LoadingTemplate, RecipeOverviewTemplate, RecipeLoadingTemplate, ProductTemplate, FooterTemplate, SectionTitleTemplate, SectionProductTemplate> : SwiftUI.View where LoadingTemplate : MiamIOSFramework.MealPlannerBasketPreviewLoading, RecipeOverviewTemplate : MiamIOSFramework.MealPlannerBasketPreviewRecipeOverview, RecipeLoadingTemplate : MiamIOSFramework.MealPlannerRecipeCardLoading, ProductTemplate : MiamIOSFramework.MealPlannerBasketPreviewProduct, FooterTemplate : MiamIOSFramework.MealPlannerBasketPreviewFooter, SectionTitleTemplate : MiamIOSFramework.MealPlannerBasketPreviewSectionTitle, SectionProductTemplate : MiamIOSFramework.MealPlannerBaskletPreviewSectionProduct {
+  @_Concurrency.MainActor(unsafe) public init(loadingTemplate: LoadingTemplate, recipeOverviewTemplate: RecipeOverviewTemplate, recipeLoadingTemplate: RecipeLoadingTemplate, productTemplate: ProductTemplate, footerTemplate: FooterTemplate, sectionTitleTemplate: SectionTitleTemplate, sectionProductTemplate: SectionProductTemplate, replaceProduct: @escaping (Swift.String) -> Swift.Void, continueShopping: @escaping () -> Swift.Void, showBasket: @escaping () -> Swift.Void, onRecipeTapped: @escaping (Swift.String) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework28MealPlannerBasketPreviewViewV4bodyQrvp", 0) __<LoadingTemplate, RecipeOverviewTemplate, RecipeLoadingTemplate, ProductTemplate, FooterTemplate, SectionTitleTemplate, SectionProductTemplate>
+}
+@available(iOS 14, *)
+public protocol MealPlannerToolbar {
+  associatedtype Content : SwiftUI.View
+  @SwiftUI.ViewBuilder func content(budgetInfos: SwiftUI.Binding<MiamIOSFramework.BudgetInfos>, isLoadingRecipes: SwiftUI.Binding<Swift.Bool>, onValidateTapped: @escaping (MiamIOSFramework.BudgetInfos) -> Swift.Void) -> Self.Content
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MyMealButtonView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(_ onButtonTapped: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework16MyMealButtonViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+open class AbstractViewBridgeModel<Event, State, Effect> : Foundation.ObservableObject where Event : miamCore.UiEvent, State : miamCore.UiState, Effect : miamCore.UiEffect {
+  @Combine.Published @_projectedValueProperty($state) public var state: State {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<State>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  final public let vm: miamCore.BaseViewModel<Event, State, Effect>
+  public var bag: MiamIOSFramework.ClosableBag
+  public init(viewModel: miamCore.BaseViewModel<Event, State, Effect>)
+  open func emit(_ event: Event)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public class DialogVM : Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.RouterOutletContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.RouterOutletContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init(routerVm: miamCore.RouterOutletViewModel)
+  public func getKotlinVm() -> miamCore.RouterOutletViewModel
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public class MyMeal : Swift.Identifiable {
+  public init(basketPreviewLine: miamCore.BasketPreviewLine)
+  final public let basketPreviewLine: miamCore.BasketPreviewLine
+  public var id: Swift.String {
+    get
+  }
+  public typealias ID = Swift.String
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class MyMealVM : miamCore.MyMealViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($meals) public var meals: [MiamIOSFramework.MyMeal] {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $meals: Combine.Published<[MiamIOSFramework.MyMeal]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.MyMealContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.MyMealContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct RecipeDetailsView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var recipeId: Swift.String?
+  @_Concurrency.MainActor(unsafe) public let showFooter: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public let showCounter: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public let showMealIdeaImage: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var close: () -> Swift.Void
+  @_Concurrency.MainActor(unsafe) public var navigateToPreview: () -> Swift.Void
+  @_Concurrency.MainActor(unsafe) public var buy: () -> Swift.Void
+  @_Concurrency.MainActor(unsafe) public var sponsorDetailsTapped: (miamCore.Sponsor) -> Swift.Void
+  @_Concurrency.MainActor(unsafe) public init(recipeId: Swift.String, showFooter: Swift.Bool = true, showCounter: Swift.Bool = true, showMealIdeaImage: Swift.Bool = true, sponsorDetailsTapped: @escaping (miamCore.Sponsor) -> Swift.Void, close: @escaping () -> Swift.Void, navigateToPreview: @escaping () -> Swift.Void, buy: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public init(vmRecipe: MiamIOSFramework.RecipeCardVM, showFooter: Swift.Bool = true, showCounter: Swift.Bool = true, showMealIdeaImage: Swift.Bool = true, sponsorDetailsTapped: @escaping (miamCore.Sponsor) -> Swift.Void, close: @escaping () -> Swift.Void, navigateToPreview: @escaping () -> Swift.Void, buy: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework17RecipeDetailsViewV4bodyQrvp", 0) __
+}
+public struct ViewOffsetKey : SwiftUI.PreferenceKey {
+  public typealias Value = CoreFoundation.CGFloat
+  public static var defaultValue: CoreFoundation.CGFloat
+  public static func reduce(value: inout MiamIOSFramework.ViewOffsetKey.Value, nextValue: () -> MiamIOSFramework.ViewOffsetKey.Value)
+}
+@available(iOS 14, *)
+public struct RecipeDetailTitleBar : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework20RecipeDetailTitleBarV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct MiamBudgetPlannerToolbar : MiamIOSFramework.MealPlannerToolbar {
+  public init()
+  public func content(budgetInfos: SwiftUI.Binding<MiamIOSFramework.BudgetInfos>, isLoadingRecipes: SwiftUI.Binding<Swift.Bool>, onValidateTapped: @escaping (MiamIOSFramework.BudgetInfos) -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A20BudgetPlannerToolbarV7content11budgetInfos16isLoadingRecipes16onValidateTappedQr7SwiftUI7BindingVyAA0cH0VG_AJySbGyALctF", 0) __
+}
+@available(iOS 14, *)
+public struct MiamRecipePreparationTime : SwiftUI.View {
+  public init(duration: Swift.String)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A21RecipePreparationTimeV4bodyQrvp", 0) __
+}
+public struct RecipeInfos {
+  public let recipe: miamCore.Recipe
+  public let price: MiamIOSFramework.Price
+  public let isInBasket: Swift.Bool
+  public init(recipe: miamCore.Recipe, price: MiamIOSFramework.Price, isInBasket: Swift.Bool)
+}
+extension MiamIOSFramework.RecipeInfos : Swift.Hashable {
+  public static func == (lhs: MiamIOSFramework.RecipeInfos, rhs: MiamIOSFramework.RecipeInfos) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct MealPlannerBudgetPreviewProductActions {
+  public let delete: () -> Swift.Void
+  public let changeProduct: () -> Swift.Void
+  public init(delete: @escaping (() -> Swift.Void), changeProduct: @escaping (() -> Swift.Void))
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class RecipeCarouselVM : miamCore.RecipeCarouselViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($suggestions) public var suggestions: [miamCore.Recipe] {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $suggestions: Combine.Published<[miamCore.Recipe]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.RecipeCarouselContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.RecipeCarouselContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerRecap : MiamIOSFramework.MealPlannerRecap {
+  public init()
+  public func content(numberOfMeals: Swift.Int, totalPrice: MiamIOSFramework.Price, onTapGesture: @escaping () -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A16MealPlannerRecapV7content13numberOfMeals10totalPrice12onTapGestureQrSi_AA0K0VyyctF", 0) __
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerBasketPreviewRecipeOverview : MiamIOSFramework.MealPlannerBasketPreviewRecipeOverview {
+  public init()
+  public func content(basketPreviewInfos: MiamIOSFramework.BasketPreviewInfos, basketPreviewActions: MiamIOSFramework.BasketPreviewRecipeActions) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A38MealPlannerBasketPreviewRecipeOverviewV7content06basketF5Infos0jF7ActionsQrAA0efK0V_AA0efgL0VtF", 0) __
+}
+@available(iOS 14, *)
+public struct PreferencesListView : SwiftUI.View {
+  public init(title: Swift.String, subtitle: Swift.String, preferences: [miamCore.CheckableTag], onToggleTag: @escaping (miamCore.CheckableTag) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework19PreferencesListViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct PreferenceListItemView : SwiftUI.View {
+  public let tag: miamCore.CheckableTag
+  public let onToggleTag: (miamCore.CheckableTag) -> Swift.Void
+  public init(tag: miamCore.CheckableTag, onToggleTag: @escaping (miamCore.CheckableTag) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework22PreferenceListItemViewV4bodyQrvp", 0) __
+}
+public struct MealPlannerInfos {
+  public let recipes: [Swift.String]
+  public let budgetInfos: MiamIOSFramework.BudgetInfos
+  public let totalPrice: MiamIOSFramework.Price
+  public init(recipes: [Swift.String], budgetInfos: MiamIOSFramework.BudgetInfos, totalPrice: MiamIOSFramework.Price)
+}
+@_hasMissingDesignatedInitializers @available(iOS 14, *)
+public class Dimension {
+  public static let sharedInstance: MiamIOSFramework.Dimension
+  public var borderWidth: CoreFoundation.CGFloat
+  public var sPadding: CoreFoundation.CGFloat
+  public var mPadding: CoreFoundation.CGFloat
+  public var lPadding: CoreFoundation.CGFloat
+  public var xlPadding: CoreFoundation.CGFloat
+  public var mlPadding: CoreFoundation.CGFloat
+  public var sButtonHeight: CoreFoundation.CGFloat
+  public var mButtonHeight: CoreFoundation.CGFloat
+  public var lButtonHeight: CoreFoundation.CGFloat
+  public var xlButtonHeight: CoreFoundation.CGFloat
+  public var sCornerRadius: CoreFoundation.CGFloat
+  public var mCornerRadius: CoreFoundation.CGFloat
+  public var lCornerRadius: CoreFoundation.CGFloat
+  @objc deinit
+}
+@available(iOS 14, *)
+public struct MiamMealPlannerBasketPreviewProduct : MiamIOSFramework.MealPlannerBasketPreviewProduct {
+  public init()
+  public func content(quantity: SwiftUI.Binding<Swift.Int>, productInfo: MiamIOSFramework.MealPlannerBasketPreviewProductInfos, actions: MiamIOSFramework.MealPlannerBudgetPreviewProductActions) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A31MealPlannerBasketPreviewProductV7content8quantity11productInfo7actionsQr7SwiftUI7BindingVySiG_AA0cdefG5InfosVAA0cd6BudgetfG7ActionsVtF", 0) __
+}
+@_inheritsConvenienceInitializers @available(iOS 13, *)
+public class MealPlannerReplaceRecipeViewModel : miamCore.MealPlannerReplaceRecipePageViewModel, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.RecipesPageContractState? {
+    get
+    @available(iOS 13, *)
+    set
+    @available(iOS 13, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.RecipesPageContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($recipes) public var recipes: [miamCore.Recipe] {
+    get
+    @available(iOS 13, *)
+    set
+    @available(iOS 13, *)
+    _modify
+  }
+  public var $recipes: Combine.Published<[miamCore.Recipe]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+public struct BasketPreviewFooterActions {
+  public let continueShopping: () -> Swift.Void
+  public let showBasket: () -> Swift.Void
+  public init(continueShopping: @escaping () -> Swift.Void, showBasket: @escaping () -> Swift.Void)
+}
+@available(iOS 14, *)
+public class CatalogFilterViewModel : Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.SingletonFilterContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.SingletonFilterContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public var numberOfRecipes: Swift.Int
+  public var difficulty: [miamCore.CatalogFilterOptions]
+  public var cost: [miamCore.CatalogFilterOptions]
+  public var time: [miamCore.CatalogFilterOptions]
+  public init(viewModelInstance: miamCore.SingletonFilterViewModel)
+  public func applyFilter()
+  public func setEvent(event: miamCore.SingletonFilterContractEvent)
+  public func clear()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public class RecipeListPageVM : Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($recipes) public var recipes: [miamCore.Recipe] {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $recipes: Combine.Published<[miamCore.Recipe]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($title) public var title: Swift.String {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $title: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.RecipeListPageContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.RecipeListPageContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init()
+  public init(categoriesId: Swift.String, title: Swift.String)
+  public var hasNoResults: Swift.Bool {
+    get
+  }
+  public func loadMoreContent(currentRecipe: miamCore.Recipe)
+  public func loadPage()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 14, *)
+public struct CatalogRecipePageNoResultsView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework30CatalogRecipePageNoResultsViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct CatalogRecipePageNoFavoritesView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework32CatalogRecipePageNoFavoritesViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct ProgressLoader : SwiftUI.View {
+  public init(color: SwiftUI.Color)
+  public init(color: SwiftUI.Color, size: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework14ProgressLoaderV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MealPlannerBasketPreviewExpandableMealView<RecipeOverviewTemplate, RecipeLoadingTemplate, ProductTemplate, SectionTitleTemplate, SectionProductTemplate> : SwiftUI.View where RecipeOverviewTemplate : MiamIOSFramework.MealPlannerBasketPreviewRecipeOverview, RecipeLoadingTemplate : MiamIOSFramework.MealPlannerRecipeCardLoading, ProductTemplate : MiamIOSFramework.MealPlannerBasketPreviewProduct, SectionTitleTemplate : MiamIOSFramework.MealPlannerBasketPreviewSectionTitle, SectionProductTemplate : MiamIOSFramework.MealPlannerBaskletPreviewSectionProduct {
+  @_Concurrency.MainActor(unsafe) public init(recipeOverviewTemplate: RecipeOverviewTemplate, recipeLoadingTemplate: RecipeLoadingTemplate, productTemplate: ProductTemplate, sectionTitleTemplate: SectionTitleTemplate, sectionProductTemplate: SectionProductTemplate, meal: miamCore.BasketPreviewLine, replaceProduct: @escaping (Swift.String) -> Swift.Void, onRecipeTapped: @escaping (Swift.String) -> Swift.Void, mealViewModel: MiamIOSFramework.MealPlannerBasketPreviewVM)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework034MealPlannerBasketPreviewExpandableC4ViewV4bodyQrvp", 0) __<RecipeOverviewTemplate, RecipeLoadingTemplate, ProductTemplate, SectionTitleTemplate, SectionProductTemplate>
+}
+@_inheritsConvenienceInitializers @available(iOS 14, *)
+public class RecipeCardVM : miamCore.RecipeViewModel, Combine.ObservableObject {
+  @Combine.Published @_projectedValueProperty($recipe) public var recipe: miamCore.Recipe? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $recipe: Combine.Published<miamCore.Recipe?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($state) public var state: miamCore.RecipeContractState? {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $state: Combine.Published<miamCore.RecipeContractState?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($isInCart) public var isInCart: Swift.Bool {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $isInCart: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($guest) public var guest: Swift.Int {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $guest: Combine.Published<Swift.Int>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($guestUpdating) public var guestUpdating: Swift.Bool {
+    get
+    @available(iOS 14, *)
+    set
+    @available(iOS 14, *)
+    _modify
+  }
+  public var $guestUpdating: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public var sortedSteps: [miamCore.RecipeStep] {
+    get
+  }
+  @objc override dynamic public init(routerVM: miamCore.RouterOutletViewModel)
+  public var isLikeEnabled: Swift.Bool {
+    get
+  }
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+public struct BasketPreviewInfos {
+  public let recipe: miamCore.Recipe
+  public let price: MiamIOSFramework.Price
+  public let pricePerPerson: Swift.String
+  public let numberOfProductsInBasket: Swift.Int
+  public let guests: Swift.Int
+  public let isReloading: Swift.Bool
+  public init(recipe: miamCore.Recipe, price: MiamIOSFramework.Price, pricePerPerson: Swift.String, numberOfProductsInBasket: Swift.Int, guests: Swift.Int, isReloading: Swift.Bool)
+}
+@_hasMissingDesignatedInitializers public class MiamText {
+  public static let sharedInstance: MiamIOSFramework.MiamText
+  @available(*, deprecated, message: "Use Localization.recipe.add instead")
+  public var addRecipe: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.showBasketPreview instead")
+  public var alreadyInCart: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.cookTime instead")
+  public var cookTime: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.add instead")
+  public var checkBasketPreview: Swift.String
+  @available(*, deprecated, message: "Use Localization.price.currency instead")
+  public var currency: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.numberOfIngredients instead")
+  public var ingredients: Swift.String
+  @available(*, deprecated, message: "Use Localization.price.perGuest instead")
+  public var preGuests: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.flag instead")
+  public var recipeFlag: Swift.String
+  @available(*, deprecated, message: "Use Localization.itemSelector.replaceProduct instead")
+  public var replaceBy: Swift.String
+  @available(*, deprecated, message: "Use Localization.itemSelector.inBasket instead")
+  public var selectedProduct: Swift.String
+  @available(*, deprecated, message: "Use Localization.itemSelector.select instead")
+  final public let select: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.preparationTime instead")
+  public var preparation: Swift.String
+  final public let recpeitDetailsInfo: Swift.String
+  @available(*, deprecated, message: "Use Localization.basket.ownedProducts instead")
+  final public let mealRowAlready: Swift.String
+  @available(*, deprecated, message: "Use Localization.basket.unavailableProducts instead")
+  final public let mealRowNotFound: Swift.String
+  @available(*, deprecated, message: "Use Localization.basket.removedProducts instead")
+  final public let mealRowRemoved: Swift.String
+  @available(*, deprecated, message: "Use Localization.basket.swapProduct instead")
+  final public let swapProduct: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.lowDifficulty instead")
+  public var difficultyEasy: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.mediumDifficulty instead")
+  public var difficultyMid: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.highDifficulty instead")
+  public var difficultyHard: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.preparationTime instead")
+  public var preparationTime: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.cookTime instead")
+  public var cookingTime: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.restingTime instead")
+  public var restingTime: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.loadingText instead")
+  public var simmering: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.showDetails instead")
+  public var viewRecipeDetail: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.steps instead")
+  public var steps: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.browseRecipes instead")
+  public var browseRecipesText: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.noRecipeFound instead")
+  public var noRecipeFoundText: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.tryAnotherSearch instead")
+  public var tryAnotherSearchText: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.filtersTitle instead")
+  public var filtersTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.difficulty instead")
+  public var filtersDifficultySectionTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.costPerPerson instead")
+  public var filterCostSectionTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.preparationTime instead")
+  public var filterPreparationTimeSectionTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.removeFilters instead")
+  public var removeFiltersButtonTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.favorites.noFavorites instead")
+  public var noFavoritRecipeYet: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.searchPlaceholder instead")
+  public var search: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.showAll instead")
+  public var showAll: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.title instead")
+  public var mealIdeas: Swift.String
+  @available(*, deprecated, message: "Use Localization.favorites.title instead")
+  public var myMealIdeas: Swift.String
+  @available(*, deprecated, message: "Use Localization.myMeals.noMealIdeaInBasket instead")
+  public var noMealIdeaInBasket: Swift.String
+  @available(*, deprecated, message: "Use Localization.basket.addProduct instead")
+  public var addIngredientText: Swift.String
+  @available(*, deprecated, message: "Use Localization.recipe.showDetails instead")
+  public var showDetails: Swift.String
+  @available(*, deprecated, message: "Use Localization.basket.removeRecipe instead")
+  public var removeFromBasket: Swift.String
+  @available(*, deprecated, message: "Use Localization.basket.continueShopping instead")
+  public var keepShopping: Swift.String
+  @available(*, deprecated, message: "Use Localization.basket.swapProduct instead")
+  public var replaceIngredient: Swift.String
+  @available(*, deprecated, message: "Use Localization.counter.persons instead")
+  public var persons: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.numberOfGuests instead")
+  public var numberOfPersons: Swift.String
+  public var mealsAdded: Swift.String
+  public var mealsAddedPlural: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.cancel instead")
+  public var cancel: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.addTag instead")
+  public var addTag: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.showResults instead")
+  public var see: Swift.String
+  @available(*, deprecated, message: "Use Localization.catalog.showResults instead")
+  public var meals: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.searchPlaceholder instead")
+  public var searchTagPlaceholder: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.title instead")
+  public var preferencesTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.searchTitle instead")
+  public var preferencesSearchTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.dietTitle instead")
+  public var dietTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.dietSubtitle instead")
+  public var dietSubtitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.cookingEquipmentTitle instead")
+  public var cookingModesTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.cookingEquipmentSubtitle instead")
+  public var cookingModesSubtitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.tastesTitle instead")
+  public var tastesTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.tastesSubtitle instead")
+  public var tastesSubtitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.searchPrefix instead")
+  public var prefixWordSearchTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.preferences.searchTitle instead")
+  public var filterSearchTitle: Swift.String
+  @available(*, deprecated, message: "Use Localization.favorites.title instead")
+  public var favoriteTitle: Swift.String
+  @objc deinit
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct PreferencesSearchView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(close: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework21PreferencesSearchViewV4bodyQrvp", 0) __
+}
+@available(iOS 14, *)
+public struct MiamBudgetPlannerSuccess : MiamIOSFramework.MealPlannerSuccess {
+  public init()
+  public func content(budgetPlannerInfos: MiamIOSFramework.MealPlannerInfos, onValidate: @escaping () -> Swift.Void) -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A20BudgetPlannerSuccessV7content06budgetD5Infos10onValidateQrAA04MealdH0V_yyctF", 0) __
+}
+@_hasMissingDesignatedInitializers public class BasketPreviewText {
+  public static let sharedInstance: MiamIOSFramework.BasketPreviewText
+  @objc deinit
+}
+@available(iOS 14, *)
+public struct MiamRecipeCardLoading : MiamIOSFramework.RecipeCardLoading {
+  public init()
+  public func content() -> some SwiftUI.View
+  
+  public typealias Content = @_opaqueReturnTypeOf("$s16MiamIOSFramework0A17RecipeCardLoadingV7contentQryF", 0) __
+}
+@available(iOS 14, *)
+@_Concurrency.MainActor(unsafe) public struct MealPlannerFormView<BudgetFormTemplate> : SwiftUI.View where BudgetFormTemplate : MiamIOSFramework.MealPlannerForm {
+  @_Concurrency.MainActor(unsafe) public init(budgetForm: BudgetFormTemplate, budgetInfos: MiamIOSFramework.BudgetInfos?, onBudgetValidated: @escaping ([Swift.String]) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework19MealPlannerFormViewV4bodyQrvp", 0) __<BudgetFormTemplate>
+}
+@available(iOS 14, *)
+public struct RecipeDetailsStepsView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s16MiamIOSFramework22RecipeDetailsStepsViewV4bodyQrvp", 0) __
+}
+extension MiamIOSFramework.MiamIcon : Swift.Equatable {}
+extension MiamIOSFramework.MiamIcon : Swift.Hashable {}
+extension MiamIOSFramework.MiamIcon : Swift.RawRepresentable {}
+@available(iOS 14, *)
+extension MiamIOSFramework.MiamColor : Swift.Equatable {}
+@available(iOS 14, *)
+extension MiamIOSFramework.MiamColor : Swift.Hashable {}
+@available(iOS 14, *)
+extension MiamIOSFramework.MiamColor : Swift.RawRepresentable {}
+extension MiamIOSFramework.MiamNeutralColor : Swift.Equatable {}
+extension MiamIOSFramework.MiamNeutralColor : Swift.Hashable {}
+extension MiamIOSFramework.MiamNeutralColor : Swift.RawRepresentable {}
+extension MiamIOSFramework.MiamNeutralIcons : Swift.Equatable {}
+extension MiamIOSFramework.MiamNeutralIcons : Swift.Hashable {}
+extension MiamIOSFramework.MiamNeutralIcons : Swift.RawRepresentable {}
