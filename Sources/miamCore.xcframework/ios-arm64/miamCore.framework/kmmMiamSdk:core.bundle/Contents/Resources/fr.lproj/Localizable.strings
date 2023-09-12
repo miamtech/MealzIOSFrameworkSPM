@@ -1,0 +1,7 @@
+"single.amount" = "Montant";
+"single.cancel" = "Annuler";
+"single.continue" = "Continuer";
+"single.vat" = "TVA";
+"formatted.string" = "Bonjour, %s";
+"formatted.string.in.between" = "Bonjour %s, rencontrons-nous!";
+"formatted.int" = "Cela fait %d €";
