@@ -36,7 +36,7 @@ jobs:
     - name: Publish Miam iOS SDK Pod
       run: |
         set -eo pipefail
-        bundle exec pod trunk push --skip-tests --skip-import-validation --allow-warnings MiamIOSFramework.podspec
+        bundle exec pod trunk push --synchronous --skip-tests --skip-import-validation --allow-warnings MiamIOSFramework.podspec
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
         MIAM_CORE_VERSION: ${{ github.event.inputs.version }}
