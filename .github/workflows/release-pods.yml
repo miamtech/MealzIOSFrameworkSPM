@@ -22,8 +22,7 @@ jobs:
     - name: Bundle install
       run: |
         pwd
-        gem install bundler
-        bundle update --bundler
+        bundle install
 
     - name: Publish Miam Core Pod
       run: |
