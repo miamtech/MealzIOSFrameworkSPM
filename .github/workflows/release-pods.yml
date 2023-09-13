@@ -21,6 +21,9 @@ jobs:
 
     - name: Bundle install
       run: |
+        rbenv install 2.7.0
+        rbenv global 2.7.0
+        ruby -v
         gem install bundler
         bundle update --bundler
 
