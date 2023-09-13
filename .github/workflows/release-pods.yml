@@ -19,6 +19,9 @@ jobs:
     - name: Checkout
       uses: 'actions/checkout@v3'
 
+    - name: Bundle install
+      run: bundle install
+
     - name: Publish Miam Core Pod
       run: |
         set -eo pipefail
