@@ -9,9 +9,9 @@ on:
         type: string
 
 jobs:
-  build-ios:
-    name: Build and publish iOS frameworks
-    runs-on: self-hosted
+  release-ios:
+    name: Build and release iOS frameworks
+    runs-on: [self-hosted]
 
     permissions: write-all
 
