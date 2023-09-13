@@ -26,8 +26,10 @@ jobs:
       run: |
         if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
           echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+          echo "MIAM_CORE_VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
         elif [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
           echo "VERSION=${{ github.event.client_payload.version }}" >> $GITHUB_ENV
+          echo "MIAM_CORE_VERSION=${{ github.event.client_payload.version }}" >> $GITHUB_ENV
         fi
 
     - name: Set up Git and tag the commit
@@ -59,7 +61,7 @@ jobs:
         bundle exec pod trunk push --skip-tests --skip-import-validation --allow-warnings miamCore.podspec
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        MIAM_CORE_VERSION: $VERSION
+        MIAM_CORE_VERSION: $MIAM_CORE_VERSION
 
     - name: Publish Miam iOS SDK Pod
       run: |
@@ -67,4 +69,4 @@ jobs:
         bundle exec pod trunk push --synchronous --skip-tests --skip-import-validation --allow-warnings MiamIOSFramework.podspec
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        MIAM_CORE_VERSION: $VERSION
+        MIAM_CORE_VERSION: $MIAM_CORE_VERSION
