@@ -20,7 +20,9 @@ jobs:
       uses: 'actions/checkout@v3'
 
     - name: Bundle install
-      run: bundle install
+      run: |
+        gem install bundler
+        bundle update --bundler
 
     - name: Publish Miam Core Pod
       run: |
