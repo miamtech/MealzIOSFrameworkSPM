@@ -279,8 +279,6 @@ PLATFORMS
 
 DEPENDENCIES
   cocoapods
-  fastlane
-  fastlane-plugin-create_xcframework
 
 BUNDLED WITH
    2.3.25
