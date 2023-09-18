@@ -26,10 +26,8 @@ jobs:
       run: |
         if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
           echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
-          echo "MIAM_CORE_VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
         elif [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
           echo "VERSION=${{ github.event.client_payload.version }}" >> $GITHUB_ENV
-          echo "MIAM_CORE_VERSION=${{ github.event.client_payload.version }}" >> $GITHUB_ENV
         fi
 
     - name: Create Release
@@ -54,7 +52,7 @@ jobs:
         bundle exec pod trunk push --skip-tests --skip-import-validation --allow-warnings miamCore.podspec
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        MIAM_CORE_VERSION: ${{ env.MIAM_CORE_VERSION }}
+        MIAM_CORE_VERSION: ${{ env.VERSION }}
 
     - name: Publish Miam iOS SDK Pod
       run: |
@@ -62,10 +60,10 @@ jobs:
         bundle exec pod trunk push --synchronous --skip-tests --skip-import-validation --allow-warnings MiamIOSFramework.podspec
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        MIAM_CORE_VERSION: ${{ env.MIAM_CORE_VERSION }}
+        MIAM_CORE_VERSION: ${{ env.VERSION }}
 
     - name: Trigger new release on Private Repo
       run: >
         curl -XPOST -u "${{ secrets.GITHUB_TOKEN }}:" -H "Accept: application/vnd.github.everest-preview+json"
         "https://api.github.com/repos/miamTech/miam-sdk/dispatches"
-        -d '{"event_type": "release_version", "client_payload": {"version": "'${{ github.event.inputs.version }}'"}}'  
+        -d '{"event_type": "release_version", "client_payload": {"version": "'${{ env.VERSION }}'"}}'  
