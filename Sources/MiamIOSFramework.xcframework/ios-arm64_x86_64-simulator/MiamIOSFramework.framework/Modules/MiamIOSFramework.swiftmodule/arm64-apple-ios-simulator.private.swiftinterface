@@ -19,7 +19,6 @@ import miamCore
   @_Concurrency.MainActor(unsafe) public var stepsContent: StepsContent
   @_Concurrency.MainActor(unsafe) public var footerContent: FooterContent
   @_Concurrency.MainActor(unsafe) public var recipeId: Swift.String?
-  @_Concurrency.MainActor(unsafe) public var guestCountFromUser: Swift.Int
   @_Concurrency.MainActor(unsafe) public var close: () -> Swift.Void
   @_Concurrency.MainActor(unsafe) public var sponsorDetailsTapped: (miamCore.Sponsor) -> Swift.Void
   @_Concurrency.MainActor(unsafe) public init(headerContent: HeaderContent, ingredientsContent: IngredientsContent, stepsContent: StepsContent, footerContent: FooterContent, recipeId: Swift.String, isForMealPlanner: Swift.Bool = false, sponsorDetailsTapped: @escaping (miamCore.Sponsor) -> Swift.Void, close: @escaping () -> Swift.Void)

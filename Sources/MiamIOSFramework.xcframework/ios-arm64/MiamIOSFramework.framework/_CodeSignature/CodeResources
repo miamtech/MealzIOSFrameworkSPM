@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		xp/5tt5gCscEMs57QaSddRCO9Jk=
+		w93NytqEOq+Rgnb68lRdtPrmeJI=
 		</data>
 		<key>Headers/MiamIOSFramework-Swift.h</key>
 		<data>
@@ -22,23 +22,23 @@
 		</data>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		JYmnZ81BEjaJmhHrVrYpx0xCy78=
+		aTuZxmemS/M/NLEKqxfsNOUgQcU=
 		</data>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		4D8gizxXRfGZo0cn4DU5i0c0GfQ=
+		xU2CUZGwIeXJ+V9M86LuXkvib1U=
 		</data>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		8dJ5A052vtfLCjxMhSUkBUaoQLI=
+		WJRFSJIeeihKwm2elzk9S+CexH4=
 		</data>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		4D8gizxXRfGZo0cn4DU5i0c0GfQ=
+		xU2CUZGwIeXJ+V9M86LuXkvib1U=
 		</data>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		xWxWN8/fX9lXuXxEMEURbvNCRcQ=
+		I2GraPG5pQq3KyvE0/KIElg8r1g=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +51,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2Ce0BuiPxy9PT+AbPwjue1c0gRkYDwqdDQ0Q8T7KY9c=
+			5EAp6i79m4EshifKJVQ2bef5OWF0aWIT+Tp/gWEleko=
 			</data>
 		</dict>
 		<key>Headers/MiamIOSFramework-Swift.h</key>
@@ -72,35 +72,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EBqX1cit1J/TVzq6xKASeUSTjrR3UH3ExbSFOC9bzYg=
+			CooPOSiJIFmgYWgenHy2mzC/cqWjobHDQqr19MH6kRg=
 			</data>
 		</dict>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LIFmRIa3jwwFutb9YojRYeiQ5fSXzdc98JP8ibIuxI8=
+			2lIwrftCIpU6SenJMUs1a78vsT5n2TDMeQcz/8yBRj0=
 			</data>
 		</dict>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4SJ3RH4m8ONAg8TYvL3rF5gG9/8f8u8d6URM2EPaQVg=
+			6SUe8XVAz32EJOJBbWFW0KB9/HKdhjKp9AKASZmDVJU=
 			</data>
 		</dict>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LIFmRIa3jwwFutb9YojRYeiQ5fSXzdc98JP8ibIuxI8=
+			2lIwrftCIpU6SenJMUs1a78vsT5n2TDMeQcz/8yBRj0=
 			</data>
 		</dict>
 		<key>Modules/MiamIOSFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZtDWfrFRy6tiOunff9kJ6gBS/oS2xobKM2c7rJIOFfk=
+			qS5EIHFDSBEDY9dB/nusuNJf6rTdbj9MlwlpiiUbAx0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
