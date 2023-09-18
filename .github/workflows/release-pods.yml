@@ -37,10 +37,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: $VERSION
-        release_name: Version $VERSION
+        tag_name: ${{ env.VERSION }}
+        release_name: Version ${{ env.VERSION }}
         commitish: ${{ github.sha }}
-        body: Release of version $VERSION
+        body: Release of version ${{ env.VERSION }}
 
     - name: Bundle install
       run: |
