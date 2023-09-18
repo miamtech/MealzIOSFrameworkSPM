@@ -54,7 +54,7 @@ jobs:
         bundle exec pod trunk push --skip-tests --skip-import-validation --allow-warnings miamCore.podspec
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        MIAM_CORE_VERSION: $MIAM_CORE_VERSION
+        MIAM_CORE_VERSION: ${{ env.MIAM_CORE_VERSION }}
 
     - name: Publish Miam iOS SDK Pod
       run: |
@@ -62,4 +62,4 @@ jobs:
         bundle exec pod trunk push --synchronous --skip-tests --skip-import-validation --allow-warnings MiamIOSFramework.podspec
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        MIAM_CORE_VERSION: $MIAM_CORE_VERSION
+        MIAM_CORE_VERSION: ${{ env.MIAM_CORE_VERSION }}
