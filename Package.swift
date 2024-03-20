@@ -15,10 +15,6 @@ let package = Package(
             name: "MealzIOSFrameworkSPM",
             targets: ["MealzIOSFrameworkSPM"]),
     ],
-    dependencies: [
-//        .package(path: "../MealzCore"),
-//        .package(url: "https://github.com/miamtech/releaseMealz", from: "1.0.0-beta3"),
-    ],
     targets: [
         .binaryTarget(
             name: "MealzIOSFrameworkSPM",
