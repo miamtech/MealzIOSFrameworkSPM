@@ -1,7 +1,0 @@
-"single.amount" = "Amount";
-"single.cancel" = "Cancel";
-"single.continue" = "Continue";
-"single.vat" = "VAT";
-"formatted.string" = "Hello, %s";
-"formatted.string.in.between" = "Hello %s, let\'s meet!";
-"formatted.int" = "It\'s %d $";

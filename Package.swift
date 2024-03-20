@@ -1,24 +1,28 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-    name: "MiamPublicSPM",
+    name: "MealzIOSFrameworkSPM",
+    defaultLocalization: "fr",
+    platforms: [
+        .iOS(.v12),
+      ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "MiamPublicSPM",
-            targets: ["miamCore", "MiamIOSFramework"]),
+            name: "MealzIOSFrameworkSPM",
+            targets: ["MealzIOSFrameworkSPM"]),
+    ],
+    dependencies: [
+//        .package(path: "../MealzCore"),
+//        .package(url: "https://github.com/miamtech/releaseMealz", from: "1.0.0-beta3"),
     ],
     targets: [
         .binaryTarget(
-            name: "miamCore",
-            path: "Sources/miamCore.xcframework"
-        ),
-        .binaryTarget(
-            name: "MiamIOSFramework",
-            path: "Sources/MiamIOSFramework.xcframework"
+            name: "MealzIOSFrameworkSPM",
+            path: "./MealzIOSFramework.xcframework"
         )
     ]
 )
