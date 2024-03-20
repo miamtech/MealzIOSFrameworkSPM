@@ -21,7 +21,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "MealzIOSFrameworkSPM",
-            path: "./Sources/MealzIOSFramework/MealzIOSFramework.xcframework"
+            path: "./MealzIOSFramework.xcframework"
         )
     ]
 )

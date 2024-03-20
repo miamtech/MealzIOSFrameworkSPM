@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		7jZkv2rQUdBZZ42FL9JNFMrYYDY=
+		P5GXiLxSRfMFlFvE1yU5yIjd67s=
 		</data>
 		<key>Headers/MealzIOSFramework-Swift.h</key>
 		<data>
@@ -14,11 +14,7 @@
 		</data>
 		<key>Headers/MealzIOSFramework.h</key>
 		<data>
-		YCkShEkdM2aczoPSDVVRX8hYszA=
-		</data>
-		<key>Headers/PublicHeader.h</key>
-		<data>
-		pi8d1QKxkjcZHAan5WkRpCX+yfg=
+		5js7921HUvD0LJ6hDMzE6wXGoeI=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -26,7 +22,7 @@
 		</data>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		qdpg8yYbAp2hBxIWcCB19zY0Oxg=
+		mZzlQ5GAejdZjLLypAUWaJTrnxU=
 		</data>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -42,7 +38,7 @@
 		</data>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		nGuT2A8+oMGHIKTnV/IOWSOm3iE=
+		bLKgGfj7gEwL4XiLujgCc1KRd+s=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -55,7 +51,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			n1OkpWZubKZBW47+GoqvcDhbyFygtiiLaWmyFQCbwBQ=
+			pdA4vlkaaybqGlu4NM6it4KGT4xESMO3JHBffTZ2UCA=
 			</data>
 		</dict>
 		<key>Headers/MealzIOSFramework-Swift.h</key>
@@ -69,21 +65,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yXLRnKAXA/CYK81giOBZcBUVfm7TKSSQVVDKhe8E8AQ=
-			</data>
-		</dict>
-		<key>Headers/PublicHeader.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			m4VWXcb/uwHoaNMIzySUN5tqZULCd13Xaz7z9BTkbHw=
+			y6NCjZ6S+obuD2k94Gb1fVEoTK0lCnZWolnf8AR+Ji8=
 			</data>
 		</dict>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tHL+RcMMHUUQ4lUGjwubDZ7WlJldWcn8Z8RIeZZb9RA=
+			CayGMkRVuK9geCIVhLG1njxiGUhTdLViKEek2C3p4xE=
 			</data>
 		</dict>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -111,7 +100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cGy4muE6EsltDJlIBZghPN/PJUUdAyDSdQR8JB45BTM=
+			ggrnx8z5qF17K75qFnnO4F0/jN20iPwL94MLEekzoSM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

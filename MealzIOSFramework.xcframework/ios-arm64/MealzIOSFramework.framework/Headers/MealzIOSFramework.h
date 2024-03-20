@@ -13,7 +13,6 @@ FOUNDATION_EXPORT double MealzIOSFrameworkVersionNumber;
 //! Project version string for MealzIOSFramework.
 FOUNDATION_EXPORT const unsigned char MealzIOSFrameworkVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like 
-#import <MealzIOSFramework/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <MealzIOSFramework/PublicHeader.h>
 
 
