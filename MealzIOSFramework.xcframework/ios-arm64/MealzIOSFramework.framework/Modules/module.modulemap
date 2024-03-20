@@ -1,0 +1,11 @@
+framework module MealzIOSFramework {
+  umbrella header "MealzIOSFramework.h"
+  export *
+
+  module * { export * }
+}
+
+module MealzIOSFramework.Swift {
+  header "MealzIOSFramework-Swift.h"
+  requires objc
+}

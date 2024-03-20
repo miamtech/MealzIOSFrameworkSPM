@@ -8,17 +8,20 @@ let package = Package(
     defaultLocalization: "fr",
     platforms: [
         .iOS(.v12),
-      ],
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "MealzIOSFrameworkSPM",
             targets: ["MealzIOSFrameworkSPM"]),
     ],
+//    dependencies: [
+//        .package(url: "https://github.com/miamtech/releaseMealz", from: "1.0.0-beta3"),
+//    ],
     targets: [
         .binaryTarget(
             name: "MealzIOSFrameworkSPM",
-            path: "./MealzIOSFramework.xcframework"
+            path: "./Sources/MealzIOSFramework/MealzIOSFramework.xcframework"
         )
     ]
 )
