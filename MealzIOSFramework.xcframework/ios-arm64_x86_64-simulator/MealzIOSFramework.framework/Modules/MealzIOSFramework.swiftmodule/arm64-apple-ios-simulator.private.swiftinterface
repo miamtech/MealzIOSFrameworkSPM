@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
-// swift-module-flags: -target arm64-apple-ios17.2-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MealzIOSFramework
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MealzIOSFramework
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import Combine
 import DeveloperToolsSupport
@@ -1781,10 +1781,11 @@ public protocol RecipeDetailsUnaddedProductProtocol {
 @available(iOS 14, *)
 public struct RecipeDetailsUnaddedProductParameters {
   public let data: MealzIOSFramework.RecipeProductData
+  public let productStatus: mealzcore.ComponentUiState
   public let onAddProduct: () -> Swift.Void
   public let onIgnoreProduct: () -> Swift.Void
   public let onChooseProduct: () -> Swift.Void
-  public init(data: MealzIOSFramework.RecipeProductData, onAddProduct: @escaping () -> Swift.Void, onIgnoreProduct: @escaping () -> Swift.Void, onChooseProduct: @escaping () -> Swift.Void)
+  public init(data: MealzIOSFramework.RecipeProductData, productStatus: mealzcore.ComponentUiState, onAddProduct: @escaping () -> Swift.Void, onIgnoreProduct: @escaping () -> Swift.Void, onChooseProduct: @escaping () -> Swift.Void)
 }
 @available(iOS 14, *)
 public struct TypeSafeRecipeDetailsUnaddedProduct : MealzIOSFramework.RecipeDetailsUnaddedProductProtocol {
@@ -2212,13 +2213,14 @@ public protocol CatalogToolbarProtocol {
   func content(params: MealzIOSFramework.CatalogToolbarParameters) -> Self.Content
 }
 public struct CatalogToolbarParameters {
-  public var usesPreferences: Swift.Bool
-  public var isFavorite: Swift.Bool
-  public var onFiltersTapped: () -> Swift.Void
-  public var onSearchTapped: () -> Swift.Void
-  public var onFavoritesTapped: () -> Swift.Void
-  public var onPreferencesTapped: () -> Swift.Void
-  public init(usesPreferences: Swift.Bool, isFavorite: Swift.Bool = false, onFiltersTapped: @escaping () -> Swift.Void, onSearchTapped: @escaping () -> Swift.Void, onFavoritesTapped: @escaping () -> Swift.Void, onPreferencesTapped: @escaping () -> Swift.Void)
+  public let numberOfActiveFilters: Swift.Int
+  public let usesPreferences: Swift.Bool
+  public let isFavorite: Swift.Bool
+  public let onFiltersTapped: () -> Swift.Void
+  public let onSearchTapped: () -> Swift.Void
+  public let onFavoritesTapped: () -> Swift.Void
+  public let onPreferencesTapped: () -> Swift.Void
+  public init(numberOfActiveFilters: Swift.Int, usesPreferences: Swift.Bool, isFavorite: Swift.Bool = false, onFiltersTapped: @escaping () -> Swift.Void, onSearchTapped: @escaping () -> Swift.Void, onFavoritesTapped: @escaping () -> Swift.Void, onPreferencesTapped: @escaping () -> Swift.Void)
 }
 @available(iOS 14, *)
 public protocol CatalogParametersProtocol {
