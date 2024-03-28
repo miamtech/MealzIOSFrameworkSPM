@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		pYNEHVrU43B/Uv4bQ78qHJ8Txgs=
+		2j39LpquEQ9Rq3Rb89AdhY9gD44=
 		</data>
 		<key>Headers/MealzIOSFramework-Swift.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		rDP4t2ra5JOizFvI9IVbVfhHsU0=
+		8l3d49NEiHz0WrWBmjMKLL+P17g=
 		</data>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		QKrVGz0FdJAAwxSPa1qqJ/0Oj+s=
+		netX1mTp7Mktk7SYsP87GGhF1Kg=
 		</data>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		QKrVGz0FdJAAwxSPa1qqJ/0Oj+s=
+		netX1mTp7Mktk7SYsP87GGhF1Kg=
 		</data>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		qtJOw/gTeJXGvLFVApZxYZyiowc=
+		VYoqpcu/ykks9JGF+T6plWZ7J90=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +51,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1vSJvmAmZTth7y+uEwuw1slMzM0DMzQzKKHJqfghvZs=
+			60bLoaTgf0+8CNhQFWpGxeDMG6SOQHdKJl7kXpx1m6E=
 			</data>
 		</dict>
 		<key>Headers/MealzIOSFramework-Swift.h</key>
@@ -72,14 +72,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tY46WX6eslae4FpMGYR9CE5hDIcAya1bfIWnIgUwh5A=
+			LQjvtFkp8wbBc3CJiz+wA42788h3OGwVezZNqsryUWg=
 			</data>
 		</dict>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xj6510KoLMftslLLHnOQL/+AIxiGDK7zKJq+43Ux6qo=
+			BMUTz7BQpewKh8AmUcFgK+ib5yCB1TXNszhzlIlzLK0=
 			</data>
 		</dict>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xj6510KoLMftslLLHnOQL/+AIxiGDK7zKJq+43Ux6qo=
+			BMUTz7BQpewKh8AmUcFgK+ib5yCB1TXNszhzlIlzLK0=
 			</data>
 		</dict>
 		<key>Modules/MealzIOSFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HGaUzPXQXmOX4WAWDnzSzp60amw960famFR3ip3Pv6I=
+			7Y+XIPfkiHKpPwfUex06JTVYZxIdI+ALfCGeEDqBnbc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -3027,26 +3027,27 @@ public struct BodyExtraSmallFontStyle : MealzIOSFramework.MiamFontStyle {
   public var font: SwiftUI.Font
   public var color: SwiftUI.Color?
 }
-@available(iOS 14, *)
-public struct MiamFontStyleProvider {
+@_hasMissingDesignatedInitializers @available(iOS 14, *)
+public class MiamFontStyleProvider {
   public static let sharedInstance: MealzIOSFramework.MiamFontStyleProvider
-  public var titleStyle: MealzIOSFramework.TitleFontStyle
-  public var titleBigStyle: MealzIOSFramework.TitleBigFontStyle
-  public var titleMediumStyle: MealzIOSFramework.TitleMediumFontStyle
-  public var titleSmallStyle: MealzIOSFramework.TitleSmallFontStyle
-  public var titleExtraSmallStyle: MealzIOSFramework.TitleExtraSmallFontStyle
-  public var titleExtraSmallMediumStyle: MealzIOSFramework.TitleExtraSmallMediumFontStyle
-  public var subtitleStyle: MealzIOSFramework.SubtitleFontStyle
-  public var bodyStyle: MealzIOSFramework.BodyFontStyle
-  public var bodyBigStyle: MealzIOSFramework.BodyBigFontStyle
-  public var bodyBigLightStyle: MealzIOSFramework.BodyBigLightFontStyle
-  public var bodyBigBoldStyle: MealzIOSFramework.BodyBigBoldFontStyle
-  public var bodyBoldStyle: MealzIOSFramework.BodyBoldFontStyle
-  public var bodyMediumStyle: MealzIOSFramework.BodyMediumFontStyle
-  public var bodyMediumBoldStyle: MealzIOSFramework.BodyMediumBoldFontStyle
-  public var bodySmallStyle: MealzIOSFramework.BodySmallFontStyle
-  public var bodySmallBoldStyle: MealzIOSFramework.BodySmallBoldFontStyle
-  public var bodyExtraSmallStyle: MealzIOSFramework.BodyExtraSmallFontStyle
+  public var titleStyle: any MealzIOSFramework.MiamFontStyle
+  public var titleBigStyle: any MealzIOSFramework.MiamFontStyle
+  public var titleMediumStyle: any MealzIOSFramework.MiamFontStyle
+  public var titleSmallStyle: any MealzIOSFramework.MiamFontStyle
+  public var titleExtraSmallStyle: any MealzIOSFramework.MiamFontStyle
+  public var titleExtraSmallMediumStyle: any MealzIOSFramework.MiamFontStyle
+  public var subtitleStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodyStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodyBigStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodyBigLightStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodyBigBoldStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodyBoldStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodyMediumStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodyMediumBoldStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodySmallStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodySmallBoldStyle: any MealzIOSFramework.MiamFontStyle
+  public var bodyExtraSmallStyle: any MealzIOSFramework.MiamFontStyle
+  @objc deinit
 }
 @available(iOS 14, *)
 public enum MealzColor : Swift.String {
